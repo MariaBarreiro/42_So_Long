@@ -1,0 +1,14 @@
+src/
+│
+├── main.c
+├── game.c            # init_game(), start_game(), etc.
+├── map.c             # load_map(), print_map(), free_map()
+├── validate_map.c    # master validate_map() function
+├── rules/
+│   ├── is_rectangular.c
+│   ├── is_enclosed.c
+│   ├── has_valid_chars.c
+│   ├── has_valid_path.c
+│   ├── count_elements.c
+│   └── flood_fill.c
+

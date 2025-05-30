@@ -1,31 +1,34 @@
-#include <fcntl.h> //read library
-#include <unistd.h> //close, read, write library
-#include <stdlib.h> //malloc, free, exit library
-#include <stdio.h> //perror library
-#include <string.h> //strerror library
-#include <gnl/get_next_line.h> //include gnl
+#include "so_long.h"
 
-char **read_map(int fd)
+void	load_map(char *map_file, y_game *game)
+{
+
+}
+
+void	validate_map(t_game *game)
 {
 	
 }
 
 int	main(int ac, char **av)
 {
-	int fd;
-	char **map;
+	int		fd;
+	t_game	*game;
 
 	if (ac == 2)
 	{
-		//open the map i'm passing in the av[1]
-		fd = open(av[1], O_RDONLY);
-		//check for error
-		if (fd < 0)
-		{
-			//error opening the map
-			return (0); //for now!!
-		}
-		map = read_map(fd);
+		//isnt it a redundancy? opening here and then opening again when i load the map?
+		// //open the map i'm passing in the av[1]
+		// fd = open(av[1], O_RDONLY);
+		// //check for error
+		// if (fd < 0)
+		// {
+		// 	//error opening the map
+		// 	return (0); //for now!!
+		// }
+
+		//read/load map
+		load_map(av[1], game);
 	}
 	return (0);
 }

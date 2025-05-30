@@ -13,6 +13,15 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+///Includes///
+
+#include <fcntl.h> //read library
+#include <unistd.h> //close, read, write library
+#include <stdlib.h> //malloc, free, exit library
+#include <stdio.h> //perror library
+#include <string.h> //strerror library
+#include "Gnl/get_next_line.h" //include gnl
+
 ///Structs///
 
 //main game structure
