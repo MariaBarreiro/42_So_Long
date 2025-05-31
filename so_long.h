@@ -32,4 +32,12 @@ typedef struct  s_game
 	int		height;					//number of rows
 }t_game;
 
+
+///Functions///
+
+///Map stuff///
+void	load_map(char *map_file, t_game *game);
+int count_lines(char *map_file);
+
+
 #endif
