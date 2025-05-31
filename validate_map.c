@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 12:35:19 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/05/31 15:15:24 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/05/31 17:15:09 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	map_validation(t_game *game)
 {
-	check_map_size(game);	
+	check_map_size(game);
+	check_borders(game);
 }
 
 void	check_map_size(t_game *game)
@@ -36,5 +37,29 @@ void	check_map_size(t_game *game)
 			printf("map not a rectangle!!Error needs handling!! (check map size)");
 		}
 		i++;
+	}
+}
+
+void check_borders(t_game *game)
+{
+	t_point_in_map	coords;
+
+	coords.y = 0;
+	while (coords.y < game->height)
+	{
+		if (coords.y == 0 || coords.y == game->height - 1)
+		{
+			coords.x = 0;
+			while (coords.x < game->width - 1)
+			{
+				if (game->map[coords.y][coords.x] != '1')
+					printf("the map is not valid!! Error needs handling! (check_borders)");
+				coords.x++;
+			}
+		}
+		else if (game->map[coords.y][0] != '1' 
+					|| game->map[coords.y][game->width - 1] != '1')
+					printf("the map is not valid!! Error needs handling! (check_borders)");
+		coords.y++;
 	}
 }

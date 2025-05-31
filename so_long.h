@@ -24,12 +24,23 @@
 
 ///Structs///
 
+//coordinates
+//good to keep track of where the player currently is
+//also good to know where the door is
+typedef struct s_point_in_map
+{
+	int x;
+	int	y;
+}t_point_in_map;
+
 //main game structure
+
 typedef struct  s_game
 {
-	char	**map;					//2d map matrix
-	int		width;					//number of columns
-	int		height;					//number of rows
+	char			**map;			//2d map matrix
+	int				width;			//number of columns
+	int				height;			//number of rows
+	t_point_in_map	coords;			//coordinates
 }t_game;
 
 
@@ -40,7 +51,9 @@ void	load_map(char *map_file, t_game *game);
 int		count_lines(char *map_file);
 void	fill_map(int fd, t_game *game);
 int		modified_strlen(char *map);
+void	map_validation(t_game *game);
 void	check_map_size(t_game *game);
+void check_borders(t_game *game);
 
 
 #endif
