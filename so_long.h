@@ -40,7 +40,10 @@ typedef struct  s_game
 	char			**map;			//2d map matrix
 	int				width;			//number of columns
 	int				height;			//number of rows
+	int				collectibles;	//number of collectibles
 	t_point_in_map	coords;			//coordinates
+	t_point_in_map	player;			//coordinates of player
+	t_point_in_map	exit;			//coordinates of exit
 }t_game;
 
 
@@ -54,6 +57,6 @@ int		modified_strlen(char *map);
 void	map_validation(t_game *game);
 void	check_map_size(t_game *game);
 void check_borders(t_game *game);
-
+void	check_map_content(t_game *game);
 
 #endif
