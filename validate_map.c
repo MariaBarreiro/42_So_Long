@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 12:35:19 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/05/31 18:24:18 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/05/31 18:29:03 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	map_validation(t_game *game)
 {
 	check_map_size(game);
 	check_borders(game);
+	count_assets(game);
 	check_map_content(game);
 }
 
@@ -67,10 +68,20 @@ void	count_assets(t_game *game)
 
 	player = 0;
 	exit = 0;
-	coords.y. = 0;
+	coords.y = 0;
 	while (coords.y++ < (game->height - 1))
 	{
+		coords.x = 0;
+		while (coords.x++ < (game->width - 1))
+		{
+			if (game->map[coords.y][coords.x] == 'P')
+				player += 1;
+			else if (game->map[coords.y][coords.x] == 'E')
+				exit += 1;
+		}
 	}
+	if (player != 1 || exit != 1)
+		printf("More than one player or exit!! Error needs handling!! (count_assets)");
 }
 
 void	check_map_content(t_game *game)
