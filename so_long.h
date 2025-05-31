@@ -40,6 +40,7 @@ void	load_map(char *map_file, t_game *game);
 int		count_lines(char *map_file);
 void	fill_map(int fd, t_game *game);
 int		modified_strlen(char *map);
+void	check_map_size(t_game *game);
 
 
 #endif

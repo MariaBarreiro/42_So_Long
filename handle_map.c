@@ -6,14 +6,11 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 09:53:43 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/05/31 09:55:05 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/05/31 14:42:29 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Gnl/get_next_line.h"
 #include "so_long.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 void	load_map(char *map_file, t_game *game)
 {
@@ -30,7 +27,7 @@ void	load_map(char *map_file, t_game *game)
 	//error handling
 	if (fd <= 0)
 	{
-		printf("Coudlnt open fd!!Error needs handling!! (load_map)");
+		printf("Couldnt open fd!!Error needs handling!! (load_map)");
 	}
 	//assign memory to the map
 	game->map = (char **)malloc(sizeof(char *) * (game->height + 1));
@@ -43,6 +40,8 @@ void	load_map(char *map_file, t_game *game)
 	fill_map(fd, game);
 	//change width with modified strlen
 	game->width = modified_strlen(game->map[0]);
+	///close fd!!
+	close(fd);
 }
 
 int count_lines(char *map_file)
