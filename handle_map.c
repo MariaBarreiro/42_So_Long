@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 09:53:43 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/05/31 14:42:29 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/05/31 18:24:59 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,12 @@ void	load_map(char *map_file, t_game *game)
 	fd = open(map_file,O_RDONLY);
 	//error handling
 	if (fd <= 0)
-	{
 		printf("Couldnt open fd!!Error needs handling!! (load_map)");
-	}
 	//assign memory to the map
 	game->map = (char **)malloc(sizeof(char *) * (game->height + 1));
 	//error handling
 	if (!game->map)
-	{
 		printf("Malloc to game->map didnt function!! Error needs handling!! (load_map)");
-	}
 	//fill the map
 	fill_map(fd, game);
 	//change width with modified strlen
@@ -55,10 +51,7 @@ int count_lines(char *map_file)
 	fd = open(map_file, O_RDONLY);
 	//Error handling
 	if (fd <= 0)
-	{
 		printf("Couldnt open fd!!Error needs handling!!(count_lines)");
-		return (0); //FOR NOW;
-	}
 	///Read one row and store it
 	temp = get_next_line(fd);
 	///Free the row, read another one and increment the i (strlen for the height)
@@ -79,11 +72,8 @@ void	fill_map(int fd, t_game *game)
 	char	*read_rest;
 
 	i = 0;
-	while (i < game->height)
-	{
+	while (i++ < game->height)
 		game->map[i] = get_next_line(fd);
-		i++;
-	}
 	//read the fd until the end and free to avoid leaks
 	read_rest=get_next_line(fd);
 	free(read_rest);
