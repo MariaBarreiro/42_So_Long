@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 12:35:19 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/05/31 18:29:03 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/05/31 18:50:56 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	map_validation(t_game *game)
 {
 	check_map_size(game);
 	check_borders(game);
+	check_map_assets(game);
 	count_assets(game);
 	check_map_content(game);
 }
@@ -57,6 +58,26 @@ void check_borders(t_game *game)
 		else if (game->map[coords.y][0] != '1' 
 					|| game->map[coords.y][game->width - 1] != '1')
 					printf("the map is not valid!! Error needs handling! (check_borders)");
+	}
+}
+
+void	check_map_assets(t_game *game)
+{
+	t_point_in_map	coords;
+
+	coords.y = 0;
+	while (coords.y++ < (game->height - 1))
+	{
+		coords.x = 0;
+		while (game->map[coords.y][coords.x++] != '\0')
+		{
+			if (game->map[coords.y][coords.x] != '0'
+				|| game->map[coords.y][coords.x] != '1'
+				|| game->map[coords.y][coords.x] != 'P'
+				|| game->map[coords.y][coords.x] != 'E'
+				|| game->map[coords.y][coords.x] != 'C')
+				printf("Wrong chars on the map!!!! Error needs handling!! (check_map_assets)");
+		}
 	}
 }
 

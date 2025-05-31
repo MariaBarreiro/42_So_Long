@@ -57,6 +57,7 @@ int		modified_strlen(char *map);
 void	map_validation(t_game *game);
 void	check_map_size(t_game *game);
 void	check_borders(t_game *game);
+void	check_map_assets(t_game *game);
 void	count_assets(t_game *game);
 void	check_map_content(t_game *game);
 
