@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	int		fd;
 	t_game	*game;
 
-	if (ac == 2)
+	if (ac == 1)
 	{
 		//check extension
 		check_extension(av[1]);
