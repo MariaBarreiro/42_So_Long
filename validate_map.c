@@ -20,6 +20,7 @@ void	map_validation(t_game *game)
 	count_assets(game);
 	check_map_content(game);
 	check_valid_path(game);
+	final_check(game);
 }
 
 void	check_map_size(t_game *game)
@@ -84,7 +85,7 @@ void	check_map_assets(t_game *game)
 
 void	count_assets(t_game *game)
 {
-	t_point_in_map	coords;
+	t_point_in_map				coords;
 	int							player;
 	int							exit;
 
@@ -124,4 +125,6 @@ void	check_map_content(t_game *game)
 				game->collectibles += 1;
 		}
 	}
+	if (game->collectibles <= 0)
+		printf("No collectibles!! Invalid Map!! Error needs handling!! (check_map_content)");
 }

@@ -53,6 +53,7 @@ typedef struct  s_game
 ///Functions///
 
 ///Map stuff///
+void	check_extension(char *file);
 void	load_map(char *map_file, t_game *game);
 int		count_lines(char *map_file);
 void	fill_map(int fd, t_game *game);
@@ -65,5 +66,6 @@ void	count_assets(t_game *game);
 void	check_map_content(t_game *game);
 void	check_valid_path(t_game *game);
 void	flood_fill(char **map, t_game *game, int x, int y);
+void	final_check(t_game *game);
 
 #endif

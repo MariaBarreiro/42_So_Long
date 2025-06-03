@@ -75,3 +75,9 @@ void	flood_fill(char **cpy_map, t_game *game, int y, int x)
 	flood_fill(cpy_map, game, y, (x - 1));
 	flood_fill(cpy_map, game, (y - 1), x);
 }
+
+void	final_check(t_game *game)
+{
+	if (game->collectibles != game->c_gathered || game->e_reached != 1)
+		printf("not all collectibles or exit were reached! Error needs handling!! (final_check)");
+}

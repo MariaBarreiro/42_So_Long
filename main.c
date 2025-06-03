@@ -19,6 +19,8 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
+		//check extension
+		check_extension(av[1]);
 		//open the map i'm passing in the av[1]
 		fd = open(av[1], O_RDONLY);
 		//check for error
@@ -34,4 +36,26 @@ int	main(int ac, char **av)
 		map_validation(game);
 	}
 	return (0);
+}
+
+void check_extension(char *file)
+{
+	char *ber_extension;
+	char *extension;
+
+	ber_extension = ".ber";
+	extension = file + (ft_strlen(file) - 4);
+	if (ft_strncmp(extension, ber_extension, 4) != 0)
+		printf("file is not .ber!!!Error needs handling!! (check_extension)");
+}
+
+void	map_validation(t_game *game)
+{
+	check_map_size(game);
+	check_borders(game);
+	check_map_assets(game);
+	count_assets(game);
+	check_map_content(game);
+	check_valid_path(game);
+	final_check(game);
 }
