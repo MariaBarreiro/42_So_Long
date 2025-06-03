@@ -19,6 +19,7 @@ void	map_validation(t_game *game)
 	check_map_assets(game);
 	count_assets(game);
 	check_map_content(game);
+	check_valid_path(game);
 }
 
 void	check_map_size(t_game *game)

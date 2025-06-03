@@ -20,7 +20,8 @@
 #include <stdlib.h> //malloc, free, exit library
 #include <stdio.h> //perror library
 #include <string.h> //strerror library
-#include "Gnl/get_next_line.h" //include gnl
+#include "Libft-Gnl/42_Gnl/get_next_line.h" //include gnl
+#include "Libft-Gnl/42_Libft/libft.h" //include libft
 
 ///Structs///
 
@@ -41,6 +42,8 @@ typedef struct  s_game
 	int				width;			//number of columns
 	int				height;			//number of rows
 	int				collectibles;	//number of collectibles
+	int				c_gathered;		//number of collectibles gathered
+	int				e_reached;	//bollean to keep track if the exit was reached or not
 	t_point_in_map	coords;			//coordinates
 	t_point_in_map	player;			//coordinates of player
 	t_point_in_map	exit;			//coordinates of exit
@@ -60,5 +63,7 @@ void	check_borders(t_game *game);
 void	check_map_assets(t_game *game);
 void	count_assets(t_game *game);
 void	check_map_content(t_game *game);
+void	check_valid_path(t_game *game);
+void	flood_fill(char **map, t_game *game, int x, int y);
 
 #endif
