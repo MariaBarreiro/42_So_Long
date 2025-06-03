@@ -12,17 +12,6 @@
 
 #include "so_long.h"
 
-void	map_validation(t_game *game)
-{
-	check_map_size(game);
-	check_borders(game);
-	check_map_assets(game);
-	count_assets(game);
-	check_map_content(game);
-	check_valid_path(game);
-	final_check(game);
-}
-
 void	check_map_size(t_game *game)
 {
 	int	i;

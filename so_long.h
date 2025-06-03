@@ -54,6 +54,8 @@ typedef struct  s_game
 
 ///Map stuff///
 void	check_extension(char *file);
+t_game	*init(void);
+void	init_game(t_game *game);
 void	load_map(char *map_file, t_game *game);
 int		count_lines(char *map_file);
 void	fill_map(int fd, t_game *game);

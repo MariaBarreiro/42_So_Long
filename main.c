@@ -21,6 +21,8 @@ int	main(int ac, char **av)
 	{
 		//check extension
 		check_extension(av[1]);
+		//initializate the game
+		game = init();
 		//open the map i'm passing in the av[1]
 		fd = open(av[1], O_RDONLY);
 		//check for error
