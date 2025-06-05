@@ -15,20 +15,35 @@ NAME = so_long
 #                                    Paths                                     #
 # **************************************************************************** #
 
-MLX_PATH		= ./Libs/mlx-minilibx/minilibx-linux/
-MLX_NAME		= libmlx_Linux.a
-MLX					= $(MLX_PATH)$(MLX_NAME)
+PATHS					= ./Src/Maps/
+PATHS					+= ./Src/
 
-LIBFT_PATH	=	./Libs/42_Libft/
-LIB_NAME	= libft.a
+MLX_PATH			= ./Libs/mlx-minilibx/minilibx-linux/
+MLX_NAME			= libmlx_Linux.a
+MLX						= $(MLX_PATH)$(MLX_NAME)
 
-SRC_PATH        = .
-INC_PATH        = .
+LIB_PATH			=	./Libs/42_Libft/
+LIB_NAME			= libft.a
+LIB						= $(LIB_PATH)$(LIB_NAME)
 
-FILES           = ft_printf.c
+INC_PATH			= ./Includes/
 
-SRC             = $(addprefix $(SRC_PATH)/, $(FILES))
-OBJS            = $(SRC:%.c=%.o)
+SRC_PATH			= ./Src/
+
+SRC_FILES			= init_game.c
+SRC_FILES			+= main.c
+
+MAP_SRC_PATH	= $(SRC_PATH)Maps/
+
+MAP_SRC_FILES	= handle_map.c
+MAP_SRC_FILES	+= validate_map.c
+MAP_SRC_FILES	+= validate_map2.c
+
+SRC						= $(addprefix $(SRC_PATH), $(SRC_FILES))
+SRC						+= $(addprefix $(MAP_SRC_PATH), $(MAP_SRC_FILES))
+
+OBJS_DIR			= Obj
+OBJS					= $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
 
 # **************************************************************************** #
 #                                   Compiler                                   #
@@ -36,9 +51,11 @@ OBJS            = $(SRC:%.c=%.o)
 
 CC              = cc
 CFLAGS          = -Wall -Wextra -Werror -g
-MLXFLAGS				= -L ./lib/minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
-MLXFLAGS				= -L . -lm -lmlx -Ilmlx -lXext -lX11
+MLXFLAGS				= -L $(MLX_PATH) -lm -lmlx -Ilmlx -lXext -lX11
 INC             = -I $(INC_PATH)
+INC						  += -I $(LIB_PATH)42_Gnl/ 
+INC							+= -I $(LIB_PATH)
+INC							+= -I $(MLX_PATH)
 
 # **************************************************************************** #
 #                                   Commands                                   #
@@ -50,18 +67,30 @@ RM              = rm -rf
 #                                    Rules                                     #
 # **************************************************************************** #
  
-all: $(BUILD_PATH) $(NAME)
+all: depends $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+depends: 
+	@$(MAKE) -C $(LIB_PATH)
+	@$(MAKE) -C $(MLX_PATH)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+$(OBJS_DIR):
+	@mkdir -p Obj
+
+$(OBJS_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+
+$(NAME): $(OBJS_DIR) $(OBJS) depends $(LIB) $(MLX)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(MLX) $(MLXFLAGS) -o $(NAME)
 
 clean:
-	    $(RM) $(OBJS)
+	@$(MAKE) clean -C $(LIB_PATH)
+	@$(MAKE) clean -C $(MLX_PATH)
+	@$(RM) $(OBJS)
 
 fclean: clean
-	 $(RM) $(NAME)
-    
+	@$(MAKE) fclean -C $(LIB_PATH)
+	@$(MAKE) clean -C $(MLX_PATH)
+	@$(RM) $(NAME) $(OBJS_DIR)
+
 re: fclean all

@@ -32,7 +32,7 @@ void	init_game(t_game *game)
 	game->c_gathered = 0;
 	game->e_reached = 0;
 	game->coords.y = 0;
-	game->coords.y = 0;
+	game->coords.x = 0;
 	game->player.y = 0;
 	game->player.x = 0;
 	game->exit.y = 0;
