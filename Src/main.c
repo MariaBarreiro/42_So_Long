@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../Includes/so_long.h"
 
 int	main(int ac, char **av)
 {
 	int		fd;
 	t_game	*game;
 
-	if (ac == 1)
+	if (ac == 2)
 	{
 		//check extension
 		check_extension(av[1]);
@@ -37,6 +37,7 @@ int	main(int ac, char **av)
 		//validates the map
 		map_validation(game);
 	}
+	printf("Pie");
 	return (0);
 }
 
@@ -54,6 +55,7 @@ void check_extension(char *file)
 void	map_validation(t_game *game)
 {
 	check_map_size(game);
+	printf("BANANAN");
 	check_borders(game);
 	check_map_assets(game);
 	count_assets(game);

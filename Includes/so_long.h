@@ -20,10 +20,10 @@
 #include <stdlib.h> //malloc, free, exit library
 #include <stdio.h> //perror library
 #include <string.h> //strerror library
-#include "get_next_line.h"	//include gnl
-#include "libft.h" //include libft
-#include "mlx.h" //include mlx
-
+#include "../Libs/42_Libft/42_Gnl/get_next_line.h"		//include gnl
+#include "../Libs/42_Libft/libft.h"						//include libft
+#include "../Libs/mlx-minilibx/minilibx-linux/mlx.h"	//include mlx
+//
 ///Structs///
 
 //coordinates

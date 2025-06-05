@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../Includes/so_long.h"
 
 void	check_map_size(t_game *game)
 {
@@ -24,6 +24,7 @@ void	check_map_size(t_game *game)
 	while (i < (game->height - 1))
 	{
 		//rectangle check
+		printf("%d", modified_strlen(game->map[i]));
 		if (modified_strlen(game->map[i]) != game->width && game->map[i] != NULL)
 			printf("map not a rectangle!!Error needs handling!! (check map size)");
 		i++;
@@ -34,13 +35,13 @@ void check_borders(t_game *game)
 {
 	t_point_in_map	coords;
 
-	coords.y = 0;
-	while (coords.y++ < game->height)
+	coords.y = -1;
+	while (++coords.y < game->height)
 	{
 		if (coords.y == 0 || coords.y == game->height - 1)
 		{
-			coords.x = 0;
-			while (coords.x++ < game->width - 1)
+			coords.x = -1;
+			while (++coords.x < game->width - 1)
 			{
 				if (game->map[coords.y][coords.x] != '1')
 					printf("the map is not valid!! Error needs handling! (check_borders)");
@@ -56,17 +57,17 @@ void	check_map_assets(t_game *game)
 {
 	t_point_in_map	coords;
 
-	coords.y = 0;
-	while (coords.y++ < (game->height - 1))
+	coords.y = -1;
+	while (++coords.y < (game->height - 1))
 	{
-		coords.x = 0;
-		while (game->map[coords.y][coords.x++] != '\0')
+		coords.x = -1;
+		while (game->map[coords.y][++coords.x] != '\0')
 		{
 			if (game->map[coords.y][coords.x] != '0'
-				|| game->map[coords.y][coords.x] != '1'
-				|| game->map[coords.y][coords.x] != 'P'
-				|| game->map[coords.y][coords.x] != 'E'
-				|| game->map[coords.y][coords.x] != 'C')
+				&& game->map[coords.y][coords.x] != '1'
+				&& game->map[coords.y][coords.x] != 'P'
+				&& game->map[coords.y][coords.x] != 'E'
+				&& game->map[coords.y][coords.x] != 'C')
 				printf("Wrong chars on the map!!!! Error needs handling!! (check_map_assets)");
 		}
 	}
@@ -80,11 +81,11 @@ void	count_assets(t_game *game)
 
 	player = 0;
 	exit = 0;
-	coords.y = 0;
-	while (coords.y++ < (game->height - 1))
+	coords.y = -1;
+	while (++coords.y < (game->height - 1))
 	{
-		coords.x = 0;
-		while (coords.x++ < (game->width - 1))
+		coords.x = -1;
+		while (++coords.x < (game->width - 1))
 		{
 			if (game->map[coords.y][coords.x] == 'P')
 				player += 1;
@@ -100,11 +101,11 @@ void	check_map_content(t_game *game)
 {
 	t_point_in_map	coords;
 
-	coords.y = 0;
-	while (coords.y++ < (game->height - 1))
+	coords.y = -1;
+	while (++coords.y < (game->height - 1))
 	{
-		coords.x = 0;
-		while (coords.x++ < (game->width - 1))
+		coords.x = -1;
+		while (++coords.x < (game->width - 1))
 		{
 			if (game->map[coords.y][coords.x] == 'P')
 				game->player = coords;

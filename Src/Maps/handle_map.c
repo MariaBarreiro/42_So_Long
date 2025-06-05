@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../Includes/so_long.h"
 
 void	load_map(char *map_file, t_game *game)
 {
 	int	fd;
 
-	///count lines to get the height
+	//count lines to get the height
 	game->height = count_lines(map_file);
 	///error handling
 	if(game->height <= 0)
@@ -71,14 +71,14 @@ void	fill_map(int fd, t_game *game)
 	int	i;
 	char	*read_rest;
 
-	i = 0;
-	while (i++ < game->height)
+	i = -1;
+	while (++i < game->height)
 		game->map[i] = get_next_line(fd);
-	//read the fd until the end and free to avoid leaks
+		//read the fd until the end and free to avoid leaks
 	read_rest=get_next_line(fd);
 	free(read_rest);
-	//NULL terminate the map
-	game->map = NULL;
+	// //NULL terminate the map
+	// game->map[i] = NULL;
 }
 
 int	modified_strlen(char *map)

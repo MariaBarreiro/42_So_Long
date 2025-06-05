@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../Includes/so_long.h"
 
 ///check if all collectibles (c) and exit (e) are reachable from the player position
 
@@ -22,16 +22,19 @@ void	check_valid_path(t_game *game)
 	if (!cpy_map)
 		printf("Error allocating memory for cpy of cpy_map!! Error needs handling!! (check_valid_path)");
 	///cpy each row into cpy_map
-	while (game->coords.y++ < game->height)
+	while (game->coords.y < game->height)
+	{
 		cpy_map[game->coords.y]=  ft_strdup(game->map[game->coords.y]);
-	///run the cpy_map and update visited tiles with 'F'
+		game->coords.y++;
+	}
+		///run the cpy_map and update visited tiles with 'F'
 	flood_fill(cpy_map, game, game->player.x, game->player.y);
 	///loop through the cpy_map again to look for unreachable assets
-	game->coords.y = 0;
-	while(game->coords.y++ < game->height)
+	game->coords.y = -1;
+	while(++game->coords.y < game->height)
 	{
-		game->coords.x = 0;
-		while(game->coords.x++ < game->width)
+		game->coords.x = -1;
+		while(++game->coords.x < game->width)
 		{
 			if (cpy_map[game->coords.y][game->coords.y] == 'C'
 				|| cpy_map[game->coords.y][game->coords.x] == 'E')
