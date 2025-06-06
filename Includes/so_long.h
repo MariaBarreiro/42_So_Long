@@ -21,9 +21,10 @@
 #include <stdio.h> //perror library
 #include <string.h> //strerror library
 #include "../Libs/42_Libft/42_Gnl/get_next_line.h"		//include gnl
-#include "../Libs/42_Libft/libft.h"						//include libft
+#include "../Libs/42_Libft/Inc/libft.h"						//include libft
 #include "../Libs/mlx-minilibx/minilibx-linux/mlx.h"	//include mlx
-//
+#include "../Libs/42_Libft/42_Ft_Printf/Inc/ft_printf.h"	//include printf
+
 ///Structs///
 
 //coordinates
@@ -57,6 +58,7 @@ typedef struct  s_game
 void	check_extension(char *file);
 t_game	*init(void);
 void	init_game(t_game *game);
+void	die(int num, t_game *game);
 void	load_map(char *map_file, t_game *game);
 int		count_lines(char *map_file);
 void	fill_map(int fd, t_game *game);

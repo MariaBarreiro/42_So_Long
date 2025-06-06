@@ -33,8 +33,8 @@ void	init_game(t_game *game)
 	game->e_reached = 0;
 	game->coords.y = -1;
 	game->coords.x = -1;
-	game->player.y = -1;
-	game->player.x = -1;
-	game->exit.y = -1;
-	game->exit.x = -1;
+	game->player.y = 0;
+	game->player.x = 0;
+	game->exit.y = 0;
+	game->exit.x = 0;
 }

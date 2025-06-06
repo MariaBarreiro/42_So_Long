@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 		if (fd < 0)
 		{
 			//error opening the map
-			return (0); //for now!!
+			die(1, game);
 		}
 
 		//read/load map
@@ -37,7 +37,6 @@ int	main(int ac, char **av)
 		//validates the map
 		map_validation(game);
 	}
-	printf("Pie");
 	return (0);
 }
 
@@ -55,7 +54,6 @@ void check_extension(char *file)
 void	map_validation(t_game *game)
 {
 	check_map_size(game);
-	printf("BANANAN");
 	check_borders(game);
 	check_map_assets(game);
 	count_assets(game);

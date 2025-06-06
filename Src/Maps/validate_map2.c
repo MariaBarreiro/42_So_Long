@@ -22,12 +22,9 @@ void	check_valid_path(t_game *game)
 	if (!cpy_map)
 		printf("Error allocating memory for cpy of cpy_map!! Error needs handling!! (check_valid_path)");
 	///cpy each row into cpy_map
-	while (game->coords.y < game->height)
-	{
+	while (++game->coords.y < game->height)
 		cpy_map[game->coords.y]=  ft_strdup(game->map[game->coords.y]);
-		game->coords.y++;
-	}
-		///run the cpy_map and update visited tiles with 'F'
+	///run the cpy_map and update visited tiles with 'F'
 	flood_fill(cpy_map, game, game->player.x, game->player.y);
 	///loop through the cpy_map again to look for unreachable assets
 	game->coords.y = -1;
@@ -36,7 +33,7 @@ void	check_valid_path(t_game *game)
 		game->coords.x = -1;
 		while(++game->coords.x < game->width)
 		{
-			if (cpy_map[game->coords.y][game->coords.y] == 'C'
+			if (cpy_map[game->coords.y][game->coords.x] == 'C'
 				|| cpy_map[game->coords.y][game->coords.x] == 'E')
 			{
 				printf("I also need to free memory here!! (check_valid_path)");
@@ -53,10 +50,10 @@ void	flood_fill(char **cpy_map, t_game *game, int y, int x)
 {
 	///check if the player is outside the cpy_map
 	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
-		printf("You're outside of the cpy_map!! Error needs handling!! (flood_fill)");
+		return ;
 	///check if coords in cpy_map were already visited (F -> filled) or if its a wall (1)
 	if (cpy_map[y][x] == 'F' || cpy_map[y][x] == '1')
-		printf("Already visited or it's a wall!! Error needs handling!! (flood_fill)");
+		return ;
 	///handle how many collectibles exist
 	if (cpy_map[y][x] == 'C')
 	{

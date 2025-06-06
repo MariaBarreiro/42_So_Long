@@ -29,6 +29,7 @@ SRC_PATH  			= ./Src/
 
 SRC_FILES			  = init_game.c
 SRC_FILES		  	+= main.c
+SRC_FILES				+= die.c
 
 MAP_SRC_PATH  	= $(SRC_PATH)Maps/
 
