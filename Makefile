@@ -23,6 +23,10 @@ LIB_PATH	  		=	./Libs/42_Libft/
 LIB_NAME  			= libft.a
 LIB	   					= $(LIB_PATH)$(LIB_NAME)
 
+PRINTF_PATH					= ./Libs/42_Libft/42_Ft_Printf/
+PRINTF_NAME					= libftprintf.a
+PRINTF							= $(PRINTF_PATH)$(PRINTF_NAME)
+
 INC_PATH	  		= ./Includes/
 
 SRC_PATH  			= ./Src/
@@ -54,6 +58,7 @@ INC             = -I $(INC_PATH)
 INC						  += -I $(LIB_PATH)/42_Gnl/ 
 INC							+= -I $(LIB_PATH)
 INC							+= -I $(MLX_PATH)
+INC							+= -I $(PRINTF_PATH)
 
 # **************************************************************************** #
 #                                   Commands                                   #
@@ -70,6 +75,7 @@ all: depends $(NAME)
 depends: 
 	@$(MAKE) -C $(LIB_PATH)
 	@$(MAKE) -C $(MLX_PATH)
+	@$(MAKE) -C $(PRINTF_PATH)
 
 $(OBJS_DIR):
 	@mkdir -p Obj
@@ -79,7 +85,7 @@ $(OBJS_DIR)/%.o: %.c
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJS_DIR) $(OBJS) depends $(LIB) $(MLX)
-	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(MLX) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(PRINTF) $(MLX) $(MLXFLAGS) -o $(NAME)
 
 clean:
 	@$(MAKE) clean -C $(LIB_PATH)
