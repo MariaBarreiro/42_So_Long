@@ -20,7 +20,7 @@ void	check_valid_path(t_game *game)
 
 	cpy_map = (char **)malloc(sizeof(char *) * game->height);
 	if (!cpy_map)
-		printf("Error allocating memory for cpy of cpy_map!! Error needs handling!! (check_valid_path)");
+		die(6, game);
 	///cpy each row into cpy_map
 	while (++game->coords.y < game->height)
 		cpy_map[game->coords.y]=  ft_strdup(game->map[game->coords.y]);
@@ -37,7 +37,7 @@ void	check_valid_path(t_game *game)
 				|| cpy_map[game->coords.y][game->coords.x] == 'E')
 			{
 				printf("I also need to free memory here!! (check_valid_path)");
-				printf("Not all C were reached or there's more than one E!! Error needs handling!!(check_valid_path)");
+				die(7, game);	
 			}
 		}
 	}
@@ -79,5 +79,5 @@ void	flood_fill(char **cpy_map, t_game *game, int y, int x)
 void	final_check(t_game *game)
 {
 	if (game->collectibles != game->c_gathered || game->e_reached != 1)
-		printf("not all collectibles or exit were reached! Error needs handling!! (final_check)");
+		die(7, game); 	
 }

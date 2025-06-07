@@ -20,18 +20,16 @@ void	load_map(char *map_file, t_game *game)
 	game->height = count_lines(map_file);
 	///error handling
 	if(game->height <= 0)
-	{
-		printf("No lines!! Error needs handling!!(load_map)"); //FOR NOW
-	}
+		die (4, game);	
 	fd = open(map_file,O_RDONLY);
 	//error handling
 	if (fd <= 0)
-		printf("Couldnt open fd!!Error needs handling!! (load_map)");
+		die(1, game);	
 	//assign memory to the map
 	game->map = (char **)malloc(sizeof(char *) * (game->height + 1));
 	//error handling
 	if (!game->map)
-		printf("Malloc to game->map didnt function!! Error needs handling!! (load_map)");
+		die(6, game);
 	//fill the map
 	fill_map(fd, game);
 	//change width with modified strlen
@@ -51,7 +49,7 @@ int count_lines(char *map_file)
 	fd = open(map_file, O_RDONLY);
 	//Error handling
 	if (fd <= 0)
-		printf("Couldnt open fd!!Error needs handling!!(count_lines)");
+		die(1, NULL);
 	///Read one row and store it
 	temp = get_next_line(fd);
 	///Free the row, read another one and increment the i (strlen for the height)

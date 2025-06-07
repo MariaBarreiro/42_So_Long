@@ -19,14 +19,13 @@ void	check_map_size(t_game *game)
 	i = 0;
 	//minimum size check
 	if (game->height < 3 || game->width < 3 || (game->height + game->width) <= 7)
-		printf("Minimum size not met! Error needs handling! (check_map_size)");
+		die(4, game);
 	//because its an array and it starts at 0, I need to take one value of Height!!!!!!!
 	while (i < (game->height - 1))
 	{
 		//rectangle check
-		printf("%d", modified_strlen(game->map[i]));
 		if (modified_strlen(game->map[i]) != game->width && game->map[i] != NULL)
-			printf("map not a rectangle!!Error needs handling!! (check map size)");
+			die(4, game);
 		i++;
 	}
 }
@@ -44,12 +43,12 @@ void check_borders(t_game *game)
 			while (++coords.x < game->width - 1)
 			{
 				if (game->map[coords.y][coords.x] != '1')
-					printf("the map is not valid!! Error needs handling! (check_borders)");
+					die (5, game);	
 			}
 		}
 		else if (game->map[coords.y][0] != '1' 
 					|| game->map[coords.y][game->width - 1] != '1')
-					printf("the map is not valid!! Error needs handling! (check_borders)");
+			die (5, game);
 	}
 }
 
@@ -68,7 +67,7 @@ void	check_map_assets(t_game *game)
 				&& game->map[coords.y][coords.x] != 'P'
 				&& game->map[coords.y][coords.x] != 'E'
 				&& game->map[coords.y][coords.x] != 'C')
-				printf("Wrong chars on the map!!!! Error needs handling!! (check_map_assets)");
+				die (7, game);
 		}
 	}
 }
@@ -94,7 +93,7 @@ void	count_assets(t_game *game)
 		}
 	}
 	if (player != 1 || exit != 1)
-		printf("More than one player or exit!! Error needs handling!! (count_assets)");
+		die (7, game);
 }
 
 void	check_map_content(t_game *game)
@@ -116,5 +115,5 @@ void	check_map_content(t_game *game)
 		}
 	}
 	if (game->collectibles <= 0)
-		printf("No collectibles!! Invalid Map!! Error needs handling!! (check_map_content)");
+		die (7, game);
 }

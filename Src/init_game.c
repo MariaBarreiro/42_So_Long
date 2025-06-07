@@ -18,7 +18,7 @@ t_game	*init(void)
 
 	game = (t_game *)malloc(1 * sizeof(t_game));
 	if (!game)
-		printf("allocation of the memory for the map failed!! Error needs handling!! (t_game *init)");
+		die(6, game);
 	init_game(game);
 	return(game);
 }

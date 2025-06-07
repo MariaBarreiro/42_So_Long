@@ -16,20 +16,43 @@ void	die(int num, t_game *game)
 {
 	ft_printf("Error\n");
 	if (num == 1)
-		ft_printf("Generic map error! No map given or too many args!\n");
-	else if (num	== 2)
+		ft_printf("Generic map error!\n");
+	else if (num == 2)
 		ft_printf("Map must have a \".ber\" extension!\n");
 	else if (num == 3)
 		ft_printf("File doesn't exist or is not reachable!\n");
 	else if (num == 4)
-		ft_printf("Map is not a rectangle!\n");
+		ft_printf("Map is the wrong size!\n");
 	else if (num == 5)
-		ft_printf("Map must be fully enclosed by walls!\n");
+		ft_printf("Wrong map format!\n");
 	else if (num == 6)
-		ft_printf("Unknown symbols!\n");
-	else if (num == 7)
 		ft_printf("Malloc didn't work out!\n");
+	else if (num == 7)
+		ft_printf("The elements are wrong!\n");
+	else if (num == 8)
+		ft_printf("Mlx error!\n");
 	if (num != 2 && num != 1)
 		free(game);
+}
 
+void	free_everything(t_game *game)
+{
+	if (game == NULL)
+		return ;
+	if (game->map != NULL)
+		free(game->map, game);
+}
+
+void	free_map(char **map, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	if (map[0] == NULL)
+		free(map);
+	while (i < (game->height - 1))
+	{
+		free(map[i]);
+		i++:
+	}
 }
