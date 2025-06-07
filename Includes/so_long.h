@@ -22,7 +22,7 @@
 #include <string.h> //strerror library
 #include "../Libs/42_Libft/42_Gnl/get_next_line.h"		//include gnl
 #include "../Libs/42_Libft/Inc/libft.h"						//include libft
-#include "../Libs/mlx-minilibx/minilibx-linux/mlx.h"	//include mlx
+#include "../Libs/minilibx-linux/mlx.h"	//include mlx
 #include "../Libs/42_Libft/42_Ft_Printf/Inc/ft_printf.h"	//include printf
 
 ///Structs///

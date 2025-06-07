@@ -15,7 +15,7 @@ NAME = so_long
 #                                    Paths                                     #
 # **************************************************************************** #
 
-MLX_PATH	  		= ./Libs/mlx-minilibx/minilibx-linux/
+MLX_PATH	  		= ./Libs/minilibx-linux/
 MLX_NAME			  = libmlx_Linux.a
 MLX					  	= $(MLX_PATH)$(MLX_NAME)
 
