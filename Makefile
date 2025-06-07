@@ -73,9 +73,12 @@ RM              = rm -rf
 all: depends $(NAME)
 
 depends: 
-	if test ! -d "$(LIB_PATH)"; then @$(MAKE) -C get_libft; fi
-	@$(MAKE) -C $(MLX_PATH)
+	if [ ! -d "$(LIB_PATH)" ]; then \
+		@$(MAKE) -C get_libft; \
+	fi
 	@$(MAKE) -C $(PRINTF_PATH)
+	@$(MAKE) -C $(LIB_PATH)
+	@$(MAKE) -C $(MLX_PATH)
 
 get_libft:
 	git clone git@github.com:MariaBarreiro/42_Libft.git $(LIB_PATH)
