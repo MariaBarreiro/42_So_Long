@@ -31,8 +31,11 @@ void	die(int num, t_game *game)
 		ft_printf("The elements are wrong!\n");
 	else if (num == 8)
 		ft_printf("Mlx error!\n");
+	else if (num == 9)
+		ft_printf("Not a valid_path!\n");
 	if (num != 2 && num != 1)
-		free(game);
+		free_everything(game);
+	exit (1);
 }
 
 void	free_everything(t_game *game)
@@ -40,7 +43,8 @@ void	free_everything(t_game *game)
 	if (game == NULL)
 		return ;
 	if (game->map != NULL)
-		free(game->map, game);
+		free_map(game->map, game);
+	free(game);
 }
 
 void	free_map(char **map, t_game *game)
@@ -53,6 +57,7 @@ void	free_map(char **map, t_game *game)
 	while (i < (game->height - 1))
 	{
 		free(map[i]);
-		i++:
+		i++;
 	}
+	free(map);
 }

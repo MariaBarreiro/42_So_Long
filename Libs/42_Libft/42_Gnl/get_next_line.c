@@ -86,7 +86,7 @@ char	*ft_extract_line(char *vault, char *line)
 	while (line[i] != '\n' && line[i])
 		i++;
 	if (line[i] != '\0')
-		line[i + 1] = '\0';
+		line[i] = '\0';
 	ft_remaining(vault);
 	return (line);
 }

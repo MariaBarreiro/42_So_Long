@@ -71,12 +71,13 @@ void	fill_map(int fd, t_game *game)
 
 	i = -1;
 	while (++i < game->height)
+	{
 		game->map[i] = get_next_line(fd);
+		// game->map[i][game->width - 1] = '\0';
+	}
 		//read the fd until the end and free to avoid leaks
 	read_rest=get_next_line(fd);
 	free(read_rest);
-	// //NULL terminate the map
-	// game->map[i] = NULL;
 }
 
 int	modified_strlen(char *map)

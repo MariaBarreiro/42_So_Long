@@ -35,7 +35,7 @@ void check_borders(t_game *game)
 	t_point_in_map	coords;
 
 	coords.y = -1;
-	while (++coords.y < game->height)
+	while (++coords.y < game->height - 1)
 	{
 		if (coords.y == 0 || coords.y == game->height - 1)
 		{

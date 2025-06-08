@@ -37,7 +37,7 @@ void	check_valid_path(t_game *game)
 				|| cpy_map[game->coords.y][game->coords.x] == 'E')
 			{
 				printf("I also need to free memory here!! (check_valid_path)");
-				die(7, game);	
+				die(9, game);	
 			}
 		}
 	}
