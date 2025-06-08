@@ -26,7 +26,7 @@ void	load_map(char *map_file, t_game *game)
 	if (fd <= 0)
 		die(1, game);	
 	//assign memory to the map
-	game->map = (char **)malloc(sizeof(char *) * (game->height + 1));
+	game->map = (char **)malloc(sizeof(char *) * (game->height));
 	//error handling
 	if (!game->map)
 		die(6, game);

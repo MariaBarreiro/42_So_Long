@@ -36,12 +36,12 @@ void	check_valid_path(t_game *game)
 			if (cpy_map[game->coords.y][game->coords.x] == 'C'
 				|| cpy_map[game->coords.y][game->coords.x] == 'E')
 			{
-				printf("I also need to free memory here!! (check_valid_path)");
+				free_array(cpy_map, game->height);	
 				die(9, game);	
 			}
 		}
 	}
-	printf("free the cpy_map missing!!! (check_valid_path)");
+	free_array(cpy_map, game->height);	
 }
 
 ///Run the cpy_map, update visited tiles with 'F' and track reached 'c' and 'e';

@@ -61,6 +61,7 @@ void	init_game(t_game *game);
 void	die(int num, t_game *game);
 void	free_everything(t_game *game);
 void	free_map(char **map, t_game *game);
+void	free_array(char **map, int lines);
 void	load_map(char *map_file, t_game *game);
 int		count_lines(char *map_file);
 void	fill_map(int fd, t_game *game);

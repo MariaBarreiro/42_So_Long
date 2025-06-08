@@ -54,7 +54,25 @@ void	free_map(char **map, t_game *game)
 	i = 0;
 	if (map[0] == NULL)
 		free(map);
-	while (i < (game->height - 1))
+	while (i < (game->height ))
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
+void	free_array(char **map, int lines)
+{
+	int	i;
+
+	i = 0;
+	if (map[0] == NULL)
+	{
+		free(map);
+		return ;
+	}
+	while (i < lines)
 	{
 		free(map[i]);
 		i++;

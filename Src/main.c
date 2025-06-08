@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 		//check for error
 		if (fd < 0)
 		{
+			free(game);
 			//error opening the map
 			die(1, game);
 		}
