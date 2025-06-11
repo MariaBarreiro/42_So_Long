@@ -12,6 +12,14 @@
 
 #include "../../Includes/so_long.h"
 
+void	load_textures(t_game *game)
+{
+	game->tiles.y = SIZE;
+	game->tiles.x = SIZE;
+	load_grass(game);
+	load_walls(game);
+	load_rest(game);
+}
 void	load_grass(t_game *game)
 {
 	game->textures.grass
@@ -63,7 +71,7 @@ void	load_rest(t_game *game)
 {
 	game->textures.collectible
 		= mlx_xpm_file_to_image(game->mlx_ptr, "../../Textures/collect/c.xpm",
-			&game->tiles.x, &game->tiles.y);
+		&game->tiles.x, &game->tiles.y);
 	game->textures.exit_active
 		= mlx_xpm_file_to_image(game->mlx_ptr, "../../Textures/exit/ac.xpm",
 			&game->tiles.x, &game->tiles.y);
@@ -79,13 +87,4 @@ void	load_rest(t_game *game)
 	game->textures.right_player
 		= mlx_xpm_file_to_image(game->mlx_ptr, "../../Textures/player/r.xpm",
 			&game->tiles.x, &game->tiles.y);
-}
-
-void	load_textures(t_game *game)
-{
-	game->tiles.y = SIZE;
-	game->tiles.x = SIZE;
-	load_grass(game);
-	load_walls(game);
-	load_rest(game);
 }
