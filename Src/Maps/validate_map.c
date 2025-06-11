@@ -18,19 +18,22 @@ void	check_map_size(t_game *game)
 
 	i = 0;
 	//minimum size check
-	if (game->height < 3 || game->width < 3 || (game->height + game->width) <= 7)
+	if (game->height < 3
+		|| game->width < 3
+		|| (game->height + game->width) <= 7)
 		die(4, game);
 	//because its an array and it starts at 0, I need to take one value of Height!!!!!!!
 	while (i < (game->height - 1))
 	{
 		//rectangle check
-		if (modified_strlen(game->map[i]) != game->width && game->map[i] != NULL)
+		if (modified_strlen(game->map[i]) != game->width
+			&& game->map[i] != NULL)
 			die(4, game);
 		i++;
 	}
 }
 
-void check_borders(t_game *game)
+void	check_borders(t_game *game)
 {
 	t_point_in_map	coords;
 
@@ -43,10 +46,10 @@ void check_borders(t_game *game)
 			while (++coords.x < game->width - 1)
 			{
 				if (game->map[coords.y][coords.x] != '1')
-					die (5, game);	
+					die (5, game);
 			}
 		}
-		else if (game->map[coords.y][0] != '1' 
+		else if (game->map[coords.y][0] != '1'
 					|| game->map[coords.y][game->width - 1] != '1')
 			die (5, game);
 	}

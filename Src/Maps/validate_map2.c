@@ -16,32 +16,32 @@
 
 void	check_valid_path(t_game *game)
 {
-	char **cpy_map;
+	char	**cpy_map;
 
 	cpy_map = (char **)malloc(sizeof(char *) * game->height);
 	if (!cpy_map)
 		die(6, game);
 	///cpy each row into cpy_map
 	while (++game->coords.y < game->height)
-		cpy_map[game->coords.y]=  ft_strdup(game->map[game->coords.y]);
+		cpy_map[game->coords.y] = ft_strdup (game->map[game->coords.y]);
 	///run the cpy_map and update visited tiles with 'F'
 	flood_fill(cpy_map, game, game->player.x, game->player.y);
 	///loop through the cpy_map again to look for unreachable assets
 	game->coords.y = -1;
-	while(++game->coords.y < game->height)
+	while (++game->coords.y < game->height)
 	{
 		game->coords.x = -1;
-		while(++game->coords.x < game->width)
+		while (++game->coords.x < game->width)
 		{
 			if (cpy_map[game->coords.y][game->coords.x] == 'C'
 				|| cpy_map[game->coords.y][game->coords.x] == 'E')
 			{
-				free_array(cpy_map, game->height);	
-				die(9, game);	
+				free_array (cpy_map, game->height);
+				die (9, game);
 			}
 		}
 	}
-	free_array(cpy_map, game->height);	
+	free_array (cpy_map, game->height);
 }
 
 ///Run the cpy_map, update visited tiles with 'F' and track reached 'c' and 'e';
@@ -78,6 +78,7 @@ void	flood_fill(char **cpy_map, t_game *game, int y, int x)
 
 void	final_check(t_game *game)
 {
-	if (game->collectibles != game->c_gathered || game->e_reached != 1)
-		die(7, game); 	
+	if (game->collectibles != game->c_gathered
+		|| game->e_reached != 1)
+		die (7, game);
 }

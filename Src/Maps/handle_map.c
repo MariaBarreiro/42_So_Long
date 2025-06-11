@@ -19,12 +19,12 @@ void	load_map(char *map_file, t_game *game)
 	//count lines to get the height
 	game->height = count_lines(map_file);
 	///error handling
-	if(game->height <= 0)
-		die (4, game);	
-	fd = open(map_file,O_RDONLY);
+	if (game->height <= 0)
+		die (4, game);
+	fd = open (map_file,O_RDONLY);
 	//error handling
 	if (fd <= 0)
-		die(1, game);	
+		die(1, game);
 	//assign memory to the map
 	game->map = (char **)malloc(sizeof(char *) * (game->height));
 	//error handling
@@ -38,11 +38,11 @@ void	load_map(char *map_file, t_game *game)
 	close(fd);
 }
 
-int count_lines(char *map_file)
+int	count_lines(char *map_file)
 {
 	int		fd;
 	int		i;
-	char *	temp;
+	char	*temp;
 
 	i = 0;
 	///Open map_file to return the fd that will identify it
@@ -66,7 +66,7 @@ int count_lines(char *map_file)
 
 void	fill_map(int fd, t_game *game)
 {
-	int	i;
+	int		i;
 	char	*read_rest;
 
 	i = -1;
@@ -76,7 +76,7 @@ void	fill_map(int fd, t_game *game)
 		// game->map[i][game->width - 1] = '\0';
 	}
 		//read the fd until the end and free to avoid leaks
-	read_rest=get_next_line(fd);
+	read_rest = get_next_line(fd);
 	free(read_rest);
 }
 

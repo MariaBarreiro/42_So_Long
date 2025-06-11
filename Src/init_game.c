@@ -20,7 +20,7 @@ t_game	*init(void)
 	if (!game)
 		die(6, game);
 	init_game(game);
-	return(game);
+	return (game);
 }
 
 void	init_game(t_game *game)

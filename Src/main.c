@@ -33,7 +33,6 @@ int	main(int ac, char **av)
 			die(1, game);
 			free(game);
 		}
-
 		//read/load map
 		load_map(av[1], game);
 		//validates the map
@@ -42,10 +41,10 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-void check_extension(char *file)
+void	check_extension(char *file)
 {
-	char *ber_extension;
-	char *extension;
+	char	*ber_extension;
+	char	*extension;
 
 	ber_extension = ".ber";
 	extension = file + (ft_strlen(file) - 4);
