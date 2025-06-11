@@ -20,6 +20,7 @@ t_game	*init(void)
 	if (!game)
 		die(6, game);
 	init_game(game);
+	init_mlx(game);
 	return (game);
 }
 

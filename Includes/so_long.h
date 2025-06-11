@@ -27,7 +27,7 @@
 
 //Defines
 
-# define MAP_SIZE 64
+# define SIZE 64
 
 ///Structs///
 
@@ -52,6 +52,40 @@ typedef struct s_image
 	int		endian;					//byte order
 }t_image;
 
+//loaded textures
+
+typedef struct s_textures
+{
+void	*grass;
+void	*grass_b_up;
+void	*grass_b_lft;
+void	*grass_b_dwn;
+void	*grass_b_rght;
+
+void	*grass_b_rght_up;
+void	*grass_b_rght_dwn;
+
+void	*grass_b_lft_up;
+void	*grass_b_lft_dwn;
+
+void	*surrounded_by_water;
+
+void	*water;
+void	*water_b_rght;
+void	*water_b_lft;
+void	*water_from_up_dwn;
+void	*water_from_lft_rght;
+
+void	*idle_player;
+void	*left_player;
+void	*right_player;
+void	*exit_active;
+void	*exit_inactive;
+void	*collectible;
+
+void	*wall;
+}t_textures;
+
 //main game structure
 
 typedef struct  s_game
@@ -68,7 +102,8 @@ typedef struct  s_game
 	t_point_in_map	tiles;			//coordinates of the tiles
 	void			*mlx_ptr;		//MLX pointer
 	void			*mlx_win_ptr;	//MLX Window pointer
-	t_image			img;			//Image metadata
+	t_image			img;			//image struct
+	t_textures		textures;		//textures struct
 }t_game;
 
 
@@ -78,6 +113,7 @@ typedef struct  s_game
 
 t_game	*init(void);
 void	init_game(t_game *game);
+void	init_mlx(t_game *game);
 void	die(int num, t_game *game);
 void	free_everything(t_game *game);
 void	free_map(char **map, t_game *game);
@@ -99,5 +135,12 @@ void	check_map_content(t_game *game);
 void	check_valid_path(t_game *game);
 void	flood_fill(char **map, t_game *game, int x, int y);
 void	final_check(t_game *game);
+
+//Render//
+
+void	load_textures(t_game *game);
+void	load_grass(t_game *game);
+void	load_walls(t_game *game);
+void	load_rest(t_game *game);
 
 #endif
