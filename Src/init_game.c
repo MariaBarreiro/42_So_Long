@@ -38,3 +38,16 @@ void	init_game(t_game *game)
 	game->exit.y = 0;
 	game->exit.x = 0;
 }
+
+void	init_mlx(t_game *game)
+{
+	game->mlx_ptr = mlx_init();		//Initializes the MLX
+	game->mlx_win_ptr = NULL;		//Initializes MLX Window
+	game->img.mlx_img = NULL;
+	game->img.addr = NULL;
+	game->img.bpp = 0;
+	game->img.line_len = 0;
+	game->img.endian = 0;
+	game->tiles.y = MAP_SIZE;
+	game->tiles.x = MAP_SIZE;
+}

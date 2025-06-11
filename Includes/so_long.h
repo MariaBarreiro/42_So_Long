@@ -15,15 +15,19 @@
 
 ///Includes///
 
-#include <fcntl.h> //read library
-#include <unistd.h> //close, read, write library
-#include <stdlib.h> //malloc, free, exit library
-#include <stdio.h> //perror library
-#include <string.h> //strerror library
-#include "../Libs/42_Libft/42_Gnl/get_next_line.h"		//include gnl
+#include <fcntl.h>											//read library
+#include <unistd.h>											//close, read, write library
+#include <stdlib.h>											//malloc, free, exit library
+#include <stdio.h>											//perror library
+#include <string.h>											//strerror library
+#include "../Libs/42_Libft/42_Gnl/get_next_line.h"			//include gnl
 #include "../Libs/42_Libft/Inc/libft.h"						//include libft
-#include "../Libs/minilibx-linux/mlx.h"	//include mlx
+#include "../Libs/minilibx-linux/mlx.h"						//include mlx
 #include "../Libs/42_Libft/42_Ft_Printf/Inc/ft_printf.h"	//include printf
+
+//Defines
+
+# define MAP_SIZE 64
 
 ///Structs///
 
@@ -36,6 +40,18 @@ typedef struct s_point_in_map
 	int	y;
 }t_point_in_map;
 
+//MLX image structure
+//Needed to manipulate pixels
+
+typedef struct s_image
+{
+	void	*mlx_img;				//pointer to the MLX image
+	void	*addr;					//raw pixel data pointer
+	int		bpp;					//bits per pixel
+	int		line_len;				//byter per row
+	int		endian;					//byte order
+}t_image;
+
 //main game structure
 
 typedef struct  s_game
@@ -45,23 +61,31 @@ typedef struct  s_game
 	int				height;			//number of rows
 	int				collectibles;	//number of collectibles
 	int				c_gathered;		//number of collectibles gathered
-	int				e_reached;	//bollean to keep track if the exit was reached or not
+	int				e_reached;		//bollean to keep track if the exit was reached or not
 	t_point_in_map	coords;			//coordinates
 	t_point_in_map	player;			//coordinates of player
 	t_point_in_map	exit;			//coordinates of exit
+	t_point_in_map	tiles;			//coordinates of the tiles
+	void			*mlx_ptr;		//MLX pointer
+	void			*mlx_win_ptr;	//MLX Window pointer
+	t_image			img;			//Image metadata
 }t_game;
 
 
 ///Functions///
 
-///Map stuff///
-void	check_extension(char *file);
+///General///
+
 t_game	*init(void);
 void	init_game(t_game *game);
 void	die(int num, t_game *game);
 void	free_everything(t_game *game);
 void	free_map(char **map, t_game *game);
 void	free_array(char **map, int lines);
+
+///Maps///
+
+void	check_extension(char *file);
 void	load_map(char *map_file, t_game *game);
 int		count_lines(char *map_file);
 void	fill_map(int fd, t_game *game);

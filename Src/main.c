@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../Includes/so_long.h"
-#include <stdio.h>
 
 int	main(int ac, char **av)
 {
