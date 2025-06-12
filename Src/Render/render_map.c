@@ -14,7 +14,13 @@
 
 void	render_map(t_game *game)
 {
-
+	game->coords.y = -1;
+	while(++game->coords.y < game->height)
+	{
+		game->coords.x = -1;
+		while (++game->coords.x < game->width)
+			render_tile(game, game->coords.x, game->coords.y);
+	}
 }
 
 void	put_image(t_game *game, void *img, int tile_x, int tile_y)
@@ -34,8 +40,13 @@ void	render_tile(t_game *game, int x, int y)
 	coords = game->map[y][x];
 	if (coords == '1')
 		put_image(game, select_water(game, x, y), x, y);
-	if (coords != '1')
+	else if (coords != '1')
 		put_image(game, select_grass(game, x, y), x, y);
-	if (coords == 'C')
+	else if (coords == 'C')
 		put_image(game, game->textures.collectible, x, y);
+	else if (coords == 'P')
+		return ;
+	else if (coords == 'E')
+		put_image(game, select_exit(game, x, y), x, y);
+
 }

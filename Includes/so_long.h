@@ -138,9 +138,24 @@ void	final_check(t_game *game);
 
 //Render//
 
+void	render_map(t_game *game);
+void	put_image(t_game *game, void *img, int tile_x, int tile_y);
+void	render_tile(t_game *game, int x, int y);
+void	*select_grass(t_game *game, int x, int y);
+void	*select_grass_combinations(t_game *game, int x, int y);
+void	*select_grass_rest(t_game *game, int x, int y);
+void	*select_water(t_game *game, int x, int y);
+void	*select_exit(t_game *game, int x, int y);
 void	load_textures(t_game *game);
 void	load_grass(t_game *game);
 void	load_walls(t_game *game);
 void	load_rest(t_game *game);
+
+//Destroy//
+
+void	destroy_textures(t_game *game);
+void	destroy_grass(t_game *game);
+void	destroy_walls(t_game *game);
+void	destroy_rest(t_game *game);
 
 #endif

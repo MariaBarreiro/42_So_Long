@@ -22,6 +22,13 @@ void	*select_grass(t_game *game, int x, int y)
 	return (select_grass_rest(game, x, y));
 }
 
+void	*select_exit(t_game *game, int x, int y)
+{
+	if (game->c_gathered == game->collectibles && game->e_reached == 1)
+		return (game->textures.exit_active);
+	return (game->textures.exit_inactive);
+}
+
 void	*select_grass_combinations(t_game *game, int x, int y)
 {
 	char	**map;
@@ -98,3 +105,4 @@ void	*select_water(t_game *game, int x, int y)
 		return (game->textures.water_from_up_dwn);
 	return (NULL);
 }
+
