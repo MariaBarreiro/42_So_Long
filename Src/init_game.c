@@ -49,6 +49,6 @@ void	init_mlx(t_game *game)
 	game->img.bpp = 0;
 	game->img.line_len = 0;
 	game->img.endian = 0;
-	game->tiles.y = MAP_SIZE;
-	game->tiles.x = MAP_SIZE;
+	game->tiles.y = SIZE;
+	game->tiles.x = SIZE;
 }

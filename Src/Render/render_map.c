@@ -30,7 +30,7 @@ void	put_image(t_game *game, void *img, int tile_x, int tile_y)
 
 	pixel_x = tile_x * SIZE;
 	pixel_y = tile_y * SIZE;
-	mlx_put_image_to_window(game->mlx_ptr, game->mlx_win_ptr, img, tile_x, tile_y);
+	mlx_put_image_to_window(game->mlx_ptr, game->mlx_win_ptr, img, pixel_x, pixel_y);
 }
 
 void	render_tile(t_game *game, int x, int y)

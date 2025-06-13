@@ -158,4 +158,11 @@ void	destroy_grass(t_game *game);
 void	destroy_walls(t_game *game);
 void	destroy_rest(t_game *game);
 
+//Movement//
+
+void	move_up(t_game *game);
+void	move_down(t_game *game);
+void	move_right(t_game *game);
+void	move_left(t_game *game);
+
 #endif
