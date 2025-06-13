@@ -35,7 +35,7 @@ void	die(int num, t_game *game)
 		ft_printf("Not a valid_path!\n");
 	if (num != 2 && num != 1)
 		free_everything(game);
-	exit (1);
+	exit (1); //TEMPORARIOOOOO
 }
 
 void	free_everything(t_game *game)

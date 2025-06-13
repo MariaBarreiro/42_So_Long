@@ -20,6 +20,8 @@
 #include <stdlib.h>											//malloc, free, exit library
 #include <stdio.h>											//perror library
 #include <string.h>											//strerror library
+# include <X11/keysym.h>
+# include <X11/X.h>
 #include "../Libs/42_Libft/42_Gnl/get_next_line.h"			//include gnl
 #include "../Libs/42_Libft/Inc/libft.h"						//include libft
 #include "../Libs/minilibx-linux/mlx.h"						//include mlx
@@ -96,6 +98,7 @@ typedef struct  s_game
 	int				collectibles;	//number of collectibles
 	int				c_gathered;		//number of collectibles gathered
 	int				e_reached;		//bollean to keep track if the exit was reached or not
+	int				moves;			//number of moves done
 	t_point_in_map	coords;			//coordinates
 	t_point_in_map	player;			//coordinates of player
 	t_point_in_map	exit;			//coordinates of exit
@@ -160,6 +163,11 @@ void	destroy_rest(t_game *game);
 
 //Movement//
 
+int	handle_keypress(int keysym, t_game *game);
+void	validate_move_up(t_game *game);
+void	validate_move_left(t_game *game);
+void	validate_move_down(t_game *game);
+void	validate_move_right(t_game *game);
 void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_right(t_game *game);
