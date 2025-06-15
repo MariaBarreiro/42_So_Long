@@ -15,37 +15,53 @@ NAME = so_long
 #                                    Paths                                     #
 # **************************************************************************** #
 
-MLX_PATH	  		= ./Libs/minilibx-linux/
-MLX_NAME			  = libmlx_Linux.a
-MLX					  	= $(MLX_PATH)$(MLX_NAME)
+MLX_PATH						= ./Libs/minilibx-linux/
+MLX_NAME						= libmlx_Linux.a
+MLX									= $(MLX_PATH)$(MLX_NAME)
 
-LIB_PATH	  		=	./Libs/42_Libft/
-LIB_NAME  			= libft.a
-LIB	   					= $(LIB_PATH)$(LIB_NAME)
+LIB_PATH						=	./Libs/42_Libft/
+LIB_NAME						= libft.a
+LIB									= $(LIB_PATH)$(LIB_NAME)
 
 PRINTF_PATH					= ./Libs/42_Libft/42_Ft_Printf/
 PRINTF_NAME					= libftprintf.a
 PRINTF							= $(PRINTF_PATH)$(PRINTF_NAME)
 
-INC_PATH	  		= ./Includes/
+INC_PATH						= ./Includes/
 
-SRC_PATH  			= ./Src/
+SRC_PATH						= ./Src/
 
-SRC_FILES			  = init_game.c
-SRC_FILES		  	+= main.c
-SRC_FILES				+= die.c
+SRC_FILES						= init_game.c
+SRC_FILES						+= main.c
+SRC_FILES						+= die.c
 
-MAP_SRC_PATH  	= $(SRC_PATH)Maps/
+MAP_SRC_PATH				= $(SRC_PATH)Maps/
 
-MAP_SRC_FILES	  = handle_map.c
-MAP_SRC_FILES	  += validate_map.c
-MAP_SRC_FILES	  += validate_map2.c
+MAP_SRC_FILES				= handle_map.c
+MAP_SRC_FILES				+= validate_map.c
+MAP_SRC_FILES				+= validate_map2.c
 
-SRC						  = $(addprefix $(SRC_PATH), $(SRC_FILES))
-SRC						  += $(addprefix $(MAP_SRC_PATH), $(MAP_SRC_FILES))
+RENDER_SRC_PATH			= $(SRC_PATH)Render/
 
-OBJS_DIR			  = Obj
-OBJS				   	= $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
+RENDER_SRC_FILES		= destroy.c
+RENDER_SRC_FILES		+= load_textures.c
+RENDER_SRC_FILES		+= render_textures.c
+RENDER_SRC_FILES		+= render_map.c
+RENDER_SRC_FILES		+= render_window.c
+
+MOVEMENT_SRC_PATH		= $(SRC_PATH)Movement/
+
+MOVEMENT_SRC_FILES	= movement.c
+MOVEMENT_SRC_FILES	+= utils.c
+
+
+SRC									= $(addprefix $(SRC_PATH), $(SRC_FILES))
+SRC									+= $(addprefix $(MAP_SRC_PATH), $(MAP_SRC_FILES))
+SRC									+= $(addprefix $(RENDER_SRC_PATH), $(RENDER_SRC_FILES))
+SRC									+= $(addprefix $(MOVEMENT_SRC_PATH), $(MOVEMENT_SRC_FILES))
+
+OBJS_DIR						= Obj
+OBJS								= $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
 
 # **************************************************************************** #
 #                                   Compiler                                   #

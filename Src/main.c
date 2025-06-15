@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 12:36:08 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/05/31 17:20:48 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/06/15 17:46:40 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int ac, char **av)
 		load_map(av[1], game);
 		//validates the map
 		map_validation(game);
+		render(game);
 	}
 	return (0);
 }

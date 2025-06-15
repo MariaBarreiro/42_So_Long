@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:43:41 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/06/11 13:44:01 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/06/15 18:17:35 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*select_grass(t_game *game, int x, int y)
 	return (select_grass_rest(game, x, y));
 }
 
-void	*select_exit(t_game *game, int x, int y)
+void	*select_exit(t_game *game)
 {
 	if (game->c_gathered == game->collectibles && game->e_reached == 1)
 		return (game->textures.exit_active);

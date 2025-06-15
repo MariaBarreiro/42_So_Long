@@ -6,11 +6,12 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 08:48:20 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/06/06 10:14:34 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/06/15 16:11:18 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/so_long.h"
+#include <stdlib.h>
 
 void	die(int num, t_game *game)
 {
@@ -35,7 +36,7 @@ void	die(int num, t_game *game)
 		ft_printf("Not a valid_path!\n");
 	if (num != 2 && num != 1)
 		free_everything(game);
-	exit (1); //TEMPORARIOOOOO
+	exit (EXIT_SUCCESS);
 }
 
 void	free_everything(t_game *game)
@@ -44,6 +45,18 @@ void	free_everything(t_game *game)
 		return ;
 	if (game->map != NULL)
 		free_map(game->map, game);
+	if (game->img.mlx_img)
+	{
+		mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
+		// destroy_textures(game);
+	}
+	if (game->mlx_win_ptr)
+		mlx_destroy_window(game->mlx_ptr, game->mlx_win_ptr);
+	if (game->mlx_ptr)
+	{
+		mlx_destroy_display(game->mlx_ptr);
+		free(game->mlx_ptr);
+	}
 	free(game);
 }
 
@@ -53,13 +66,13 @@ void	free_map(char **map, t_game *game)
 
 	i = 0;
 	if (map[0] == NULL)
-		free(map);
+		return (free(game->map));
 	while (i < (game->height))
 	{
-		free(map[i]);
+		free(game->map[i]);
 		i++;
 	}
-	free(map);
+	free(game->map);
 }
 
 void	free_array(char **map, int lines)
@@ -78,4 +91,10 @@ void	free_array(char **map, int lines)
 		i++;
 	}
 	free(map);
+}
+
+int	 ft_exit(t_game *game)
+{
+	free_everything(game);
+	exit (EXIT_SUCCESS);
 }

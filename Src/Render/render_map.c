@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 09:07:50 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/06/11 09:08:14 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/06/15 18:18:46 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ void	render_tile(t_game *game, int x, int y)
 	else if (coords == 'P')
 		return ;
 	else if (coords == 'E')
-		put_image(game, select_exit(game, x, y), x, y);
-
+		put_image(game, select_exit(game), x, y);
 }
