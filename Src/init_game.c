@@ -21,6 +21,7 @@ t_game	*init(void)
 		die(6, game);
 	init_game(game);
 	init_mlx(game);
+	load_textures(game);
 	return (game);
 }
 
@@ -32,6 +33,7 @@ void	init_game(t_game *game)
 	game->collectibles = 0;
 	game->c_gathered = 0;
 	game->e_reached = 0;
+	game->moves = 0;
 	game->coords.y = -1;
 	game->coords.x = -1;
 	game->player.y = 0;

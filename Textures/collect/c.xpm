@@ -1,5 +1,6 @@
 /* XPM */
-static char *_fa306f56c7d44cfa2f08d73252d082ewR7Hbo9jJ4kdhq7H[] = {
+/* static char *_fa306f56c7d44cfa2f08d73252d082ewR7Hbo9jJ4kdhq7H[] = { */
+static char *c_xpm[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 6 1 ",
 "  c None",

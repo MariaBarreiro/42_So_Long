@@ -18,13 +18,11 @@ void	move_up(t_game *game)
 	int		new_pos;
 	int		x_pos;
 	void	*old_grass;
-	void	*new_grass;
 
 	previous_pos = game->player.y;
 	new_pos = game->player.y - 1;
 	x_pos = game->player.x;
 	old_grass = select_grass(game, x_pos, previous_pos);
-	new_grass = select_grass(game, x_pos, new_pos);
 
 	//restore correct floor at old position
 	put_image(game, old_grass, (x_pos * SIZE), (previous_pos * SIZE));
@@ -54,13 +52,11 @@ void	move_down(t_game *game)
 	int		new_pos;
 	int		x_pos;
 	void	*old_grass;
-	void	*new_grass;
 
 	previous_pos = game->player.y;
 	new_pos = game->player.y + 1;
 	x_pos = game->player.x;
 	old_grass = select_grass(game, x_pos, previous_pos);
-	new_grass = select_grass(game, x_pos, new_pos);
 
 	//restore correct floor at old position
 	put_image(game, old_grass, (x_pos * SIZE), (previous_pos * SIZE));
@@ -90,13 +86,11 @@ void	move_right(t_game *game)
 	int		new_pos;
 	int		y_pos;
 	void	*old_grass;
-	void	*new_grass;
 
 	previous_pos = game->player.x;
 	new_pos = game->player.x + 1;
 	y_pos = game->player.y;
 	old_grass = select_grass(game, y_pos, previous_pos);
-	new_grass = select_grass(game, y_pos, new_pos);
 
 	//restore correct floor at old position
 	put_image(game, old_grass, (y_pos * SIZE), (previous_pos * SIZE));
@@ -126,13 +120,11 @@ void	move_left(t_game *game)
 	int		new_pos;
 	int		y_pos;
 	void	*old_grass;
-	void	*new_grass;
 
 	previous_pos = game->player.x;
 	new_pos = game->player.x - 1;
 	y_pos = game->player.y;
 	old_grass = select_grass(game, y_pos, previous_pos);
-	new_grass = select_grass(game, y_pos, new_pos);
 
 	//restore correct floor at old position
 	put_image(game, old_grass, (y_pos * SIZE), (previous_pos * SIZE));
