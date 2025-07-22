@@ -15,7 +15,7 @@
 int	handle_keypress(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
-		exit (1); //TEMPORARIO
+		ft_exit(game);
 	if (keysym == XK_w || keysym == XK_Up)
 		validate_move_up(game);
 	if (keysym == XK_s || keysym == XK_Down)

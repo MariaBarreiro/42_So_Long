@@ -27,16 +27,14 @@ int	main(int ac, char **av)
 		fd = open(av[1], O_RDONLY);
 		//check for error
 		if (fd < 0)
-		{
 			//error opening the map
 			die(1, game);
-			free(game);
-		}
 		//read/load map
 		load_map(av[1], game);
 		//validates the map
 		map_validation(game);
 		render(game);
+		ft_exit(game);
 	}
 	return (0);
 }
