@@ -12,6 +12,24 @@
 
 #include "../../Includes/so_long.h"
 
+void	check_win(t_game *game)
+{
+	if (game->map[game->player.y][game->player.x] == 'C')
+	{
+		game->c_gathered++;
+		game->map[game->player.y][game->player.x] = '0';
+	}
+	if (game->map[game->player.y][game->player.x] == 'E' 
+			&& game->c_gathered != game->collectibles)
+		return ;
+	if (game->map[game->player.y][game->player.x] == 'E'
+			&& game->c_gathered == game->collectibles)
+	{
+		ft_printf("You win!\n");
+		ft_exit(game);
+	}
+}
+
 void	move_up(t_game *game)
 {
 	int		previous_pos;

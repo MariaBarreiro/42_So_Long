@@ -142,6 +142,7 @@ int		 ft_exit(t_game *game);
 
 //Movement//
 
+void	check_win(t_game *game);
 void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_right(t_game *game);
