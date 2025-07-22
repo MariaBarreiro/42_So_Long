@@ -23,17 +23,32 @@ void	render_map(t_game *game)
 			// put_walls(game, game->coords.x, game->coords.y);
 			// put_floor(game, game->coords.x, game->coords.y);
 			// put_rest(game, game->coords.x, game->coords.y);
+			render_corners(game, game->coords.x, game->coords.y);
 			render_tile(game, game->coords.x, game->coords.y);
 		}
 	}
 }
+
+void	render_corners(t_game *game, int x, int y)
+{
+	if (y == 0 && x == 0)
+		put_image(game, game->textures.wall, x * SIZE, y * SIZE);
+	if (y == game->height - 1 && x == 0)
+		put_image(game, game->textures.wall, x * SIZE, y * SIZE);
+	if (y == 0 && x == game->width - 1)
+		put_image(game, game->textures.wall, x * SIZE, y * SIZE);
+	if (y == game->height - 1 && x == game->width - 1)
+		put_image(game, game->textures.wall, x * SIZE, y * SIZE);
+}
+
 void	render_tile(t_game *game, int x, int y)
 {
 	char coords;
 
 	coords = game->map[y][x];
-	if (coords == '1' && y > 0 && game->height - 1 > y
-			&& x > 0 && game->width - 1 > x)
+	// if (coords == '1' && y > 0 && y < game->height - 1 
+	// 	&& x > 0 && x < game->width - 1)
+	if (coords == '1')
 		put_image(game, game->textures.wall, x * SIZE, y * SIZE);
 	if (coords == '0')
 		put_image(game, game->textures.floor, x * SIZE, y * SIZE);
@@ -47,6 +62,18 @@ void	render_tile(t_game *game, int x, int y)
 	if (coords == 'E' && game->c_gathered != game->collectibles
 			&& game->e_reached == 0)
 		put_image(game, game->textures.exit_inactive, x * SIZE, y * SIZE);
+}
+
+void	put_image(t_game *game, char *tile, int tile_x, int tile_y)
+{
+	if (game->img.mlx_img)
+	{
+		mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
+		game->img.mlx_img = 0;
+	}
+	printf("%p", game->img.mlx_img);
+	game->img.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, tile, &game->tiles.x, &game->tiles.y);
+	mlx_put_image_to_window(game->mlx_ptr, game->mlx_win_ptr, game->img.mlx_img, tile_x, tile_y);
 }
 //
 // void	put_walls(t_game *game, int x, int y)
@@ -116,14 +143,3 @@ void	render_tile(t_game *game, int x, int y)
 // 	game->img = mlx_xpm_file_to_image(game->mlx_ptr, game->img.mlx_img, &game->tiles.x, &game->tiles.y);
 // 	mlx_put_image_to_window(game->mlx_ptr, game->mlx_win_ptr, img, pixel_x, pixel_y);
 // }
-
-void	put_image(t_game *game, char *tile, int tile_x, int tile_y)
-{
-	if (game->img.mlx_img)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
-		game->img.mlx_img = 0;
-	}
-	game->img.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, tile, &game->tiles.x, &game->tiles.y);
-	mlx_put_image_to_window(game->mlx_ptr, game->mlx_win_ptr, game->img.mlx_img, tile_x, tile_y);
-}

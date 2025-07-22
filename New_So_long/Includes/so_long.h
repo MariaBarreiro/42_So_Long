@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 ///Includes///
+void	render_corners(t_game *game, int x, int y);
 
 #include <fcntl.h>											//read library
 #include <unistd.h>											//close, read, write library
@@ -136,6 +137,7 @@ void	*select_exit(t_game *game);
 void	render_window(t_game *game);
 void	render(t_game *game);
 void	render_tile(t_game *game, int x, int y);
+void	render_corners(t_game *game, int x, int y);
 
 //Destroy and exit//
 
