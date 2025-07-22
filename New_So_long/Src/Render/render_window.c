@@ -20,10 +20,7 @@ void	render_window(t_game *game)
 	game->mlx_win_ptr = mlx_new_window(game->mlx_ptr, (game->width * SIZE), 
 								(game->height * SIZE), "so_long");
 	if (game->mlx_win_ptr == NULL)
-	{
-		free (game->mlx_win_ptr);
 		die(8, game);
-	}
 	game->img.mlx_img = mlx_new_image(game->mlx_ptr, (game->width * SIZE),
 								(game->height * SIZE));
 	game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp, 

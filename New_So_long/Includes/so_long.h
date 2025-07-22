@@ -128,12 +128,14 @@ void	render_map(t_game *game);
 void	put_walls(t_game *game, int x, int y);
 void	put_floor(t_game *game, int x, int y);
 void	put_rest(t_game *game, int x, int y);
-void	put_image(t_game *game, void *img, int tile_x, int tile_y);
+// void	put_image(t_game *game, void *img, int tile_x, int tile_y);
+void	put_image(t_game *game, char *tile, int tile_x, int tile_y);
 void	load_textures(t_game *game);
 void	load_rest(t_game *game);
 void	*select_exit(t_game *game);
 void	render_window(t_game *game);
 void	render(t_game *game);
+void	render_tile(t_game *game, int x, int y);
 
 //Destroy and exit//
 

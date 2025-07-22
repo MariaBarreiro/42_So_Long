@@ -61,7 +61,7 @@ void	move_up(t_game *game)
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 
 	game->player.y = new_pos;
-	//falta checkar se ganhei o jogo
+	check_win(game);
 }
 
 void	move_down(t_game *game)
@@ -95,7 +95,7 @@ void	move_down(t_game *game)
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 
 	game->player.y = new_pos;
-	//falta checkar se ganhei o jogo
+	check_win(game);
 }
 
 void	move_right(t_game *game)
@@ -129,7 +129,7 @@ void	move_right(t_game *game)
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 
 	game->player.x = new_pos;
-	//falta checkar se ganhei o jogo
+	check_win(game);
 }
 
 void	move_left(t_game *game)
@@ -163,5 +163,5 @@ void	move_left(t_game *game)
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 
 	game->player.x = new_pos;
-	//falta checkar se ganhei o jogo
+	check_win(game);
 }
