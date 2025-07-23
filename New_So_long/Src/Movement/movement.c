@@ -40,23 +40,23 @@ void	move_up(t_game *game)
 	previous_pos = game->player.y;
 	new_pos = game->player.y - 1;
 	x_pos = game->player.x;
-	old_floor = "../../Textures/tile/floor.xpm";
+	old_floor = game->textures.floor;
 
 	//restore correct floor at old position
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 
 	//2/3 missing in new tile
-	put_image(game, "../../Textures/player/player.xpm", (x_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (x_pos * SIZE), 
 		   new_pos * (SIZE - ((SIZE / 3) * 1)));
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 
 	//1/3 missing in new tile
-	put_image(game, "../../Textures/player/player.xpm", (x_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (x_pos * SIZE), 
 		   new_pos * (SIZE - ((SIZE / 3) * 2)));
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 	
 	//new tile
-	put_image(game, "../../Textures/player/player.xpm", (x_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (x_pos * SIZE), 
 		   new_pos * SIZE);
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 
@@ -74,23 +74,23 @@ void	move_down(t_game *game)
 	previous_pos = game->player.y;
 	new_pos = game->player.y + 1;
 	x_pos = game->player.x;
-	old_floor = "../../Textures/tile/floor.xpm";
+	old_floor = game->textures.floor;
 
 	//restore correct floor at old position
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 
 	//2/3 missing in new tile
-	put_image(game, "../../Textures/player/player.xpm", (x_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (x_pos * SIZE), 
 		   new_pos * (SIZE + ((SIZE / 3) * 1)));
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 
 	//1/3 missing in new tile
-	put_image(game, "../../Textures/player/player.xpm", (x_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (x_pos * SIZE), 
 		   new_pos * (SIZE + ((SIZE / 3) * 2)));
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 	
 	//new tile
-	put_image(game, "../../Textures/player/player.xpm", (x_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (x_pos * SIZE), 
 		   new_pos * SIZE);
 	put_image(game, old_floor, (x_pos * SIZE), (previous_pos * SIZE));
 
@@ -108,23 +108,23 @@ void	move_right(t_game *game)
 	previous_pos = game->player.x;
 	new_pos = game->player.x + 1;
 	y_pos = game->player.y;
-	old_floor = "../../Textures/tile/floor.xpm";
+	old_floor = game->textures.floor;
 
 	//restore correct floor at old position
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 
 	//2/3 missing in new tile
-	put_image(game, "../../Textures/player/player.xpm", (y_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (y_pos * SIZE), 
 		   new_pos * (SIZE + ((SIZE / 3) * 1)));
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 
 	//1/3 missing in new tile
-	put_image(game, "../../Textures/player/player.xpm", (y_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (y_pos * SIZE), 
 		   new_pos * (SIZE + ((SIZE / 3) * 2)));
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 	
 	//new tile
-	put_image(game, "../../Textures/player/player.xpm", (y_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (y_pos * SIZE), 
 		   new_pos * SIZE);
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 
@@ -142,23 +142,23 @@ void	move_left(t_game *game)
 	previous_pos = game->player.x;
 	new_pos = game->player.x - 1;
 	y_pos = game->player.y;
-	old_floor = "../../Textures/tile/floor.xpm";
+	old_floor = game->textures.floor;
 
 	//restore correct floor at old position
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 
 	//2/3 missing in new tile
-	put_image(game, "../../Textures/player/player.xpm", (y_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (y_pos * SIZE), 
 		   new_pos * (SIZE - ((SIZE / 3) * 1)));
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 
 	//1/3 missing in new tile
-	put_image(game, "../../Textures/player/player.xpm", (y_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (y_pos * SIZE), 
 		   new_pos * (SIZE - ((SIZE / 3) * 2)));
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 	
 	//new tile
-	put_image(game, "../../Textures/player/player.xpm", (y_pos * SIZE), 
+	put_image(game, game->textures.idle_player, (y_pos * SIZE), 
 		   new_pos * SIZE);
 	put_image(game, old_floor, (y_pos * SIZE), (previous_pos * SIZE));
 
