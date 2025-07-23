@@ -44,11 +44,8 @@ void	put_walls(t_game *game, int x, int y)
 	char coords;
 
 	coords = game->map[y][x];
-	while (coords)
-	{
+	if (coords == '1')
 		put_image(game, game->textures.wall, x, y);
-		coords++;
-	}
 }
 
 void	put_floor(t_game *game, int x, int y)
@@ -56,11 +53,8 @@ void	put_floor(t_game *game, int x, int y)
 	char	coords;
 
 	coords = game->map[y][x];
-	while (coords)
-	{
+	if (coords == '0')
 		put_image(game, game->textures.floor, x, y);
-		coords++;
-	}
 }
 
 void	put_rest(t_game *game, int x, int y)
