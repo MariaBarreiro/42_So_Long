@@ -44,7 +44,7 @@ MAP_SRC_FILES				+= validate_map2.c
 RENDER_SRC_PATH			= $(SRC_PATH)Render/
 
 RENDER_SRC_FILES		= destroy.c
-RENDER_SRC_FILES		+= load_textures.c
+# RENDER_SRC_FILES		+= load_textures.c
 # RENDER_SRC_FILES		+= render_textures.c
 RENDER_SRC_FILES		+= render_map.c
 RENDER_SRC_FILES		+= render_window.c

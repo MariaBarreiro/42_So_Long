@@ -21,7 +21,7 @@ t_game	*init(void)
 		die(6, game);
 	init_game(game);
 	init_mlx(game);
-	load_textures(game);
+	// load_textures(game);
 	return (game);
 }
 
