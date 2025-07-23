@@ -4,7 +4,7 @@
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+
 /*   Created: 2025/07/12 15:49:58 by mda-enca          #+#    #+#             */
 /*   Updated: 2025/07/12 16:05:18 by mda-enca         ###   ########.fr       */
 /*                                                                            */
@@ -57,20 +57,20 @@ typedef struct s_image
 }t_image;
 
 //loaded textures
-
-typedef struct s_textures
-{
-	void	*floor;
-
-	void	*wall;
-
-	void	*idle_player;
-
-	void	*exit_active;
-	void	*exit_inactive;
-
-	void	*collectible;
-}t_textures;
+//
+// typedef struct s_textures
+// {
+// 	void	*floor;
+//
+// 	void	*wall;
+//
+// 	void	*idle_player;
+//
+// 	void	*exit_active;
+// 	void	*exit_inactive;
+//
+// 	void	*collectible;
+// }t_textures;
 
 //main game structure
 
@@ -90,7 +90,7 @@ typedef struct  s_game
 	void						*mlx_ptr;		//MLX pointer
 	void						*mlx_win_ptr;	//MLX Window pointer
 	t_image						img;			//image struct
-	t_textures					textures;		//textures struct
+	// t_textures					textures;		//textures struct
 }t_game;
 
 
@@ -129,8 +129,8 @@ void	render_map(t_game *game);
 void	put_walls(t_game *game, int x, int y);
 void	put_floor(t_game *game, int x, int y);
 void	put_rest(t_game *game, int x, int y);
-void	put_image(t_game *game, void *img, int tile_x, int tile_y);
-// void	put_image(t_game *game, char *tile, int tile_x, int tile_y);
+// void	put_image(t_game *game, void *img, int tile_x, int tile_y);
+void	put_image(t_game *game, char *tile, int tile_x, int tile_y);
 void	load_textures(t_game *game);
 // void	load_rest(t_game *game);
 void	*select_exit(t_game *game);
