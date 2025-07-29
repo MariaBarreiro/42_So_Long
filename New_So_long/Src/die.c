@@ -48,7 +48,7 @@ void	free_everything(t_game *game)
 	if (game->img.mlx_img)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
-		// destroy_textures(game);
+		destroy_textures(game);
 	}
 	if (game->mlx_win_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->mlx_win_ptr);

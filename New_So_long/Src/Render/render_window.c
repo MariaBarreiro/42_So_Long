@@ -35,6 +35,7 @@ void	render(t_game *game)
 	render_window(game);
 	if (!game->mlx_win_ptr)
 		die(8, game);
+	game->c_gathered = 0;
 	render_map(game);
 	mlx_hook(game->mlx_win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
 	mlx_hook(game->mlx_win_ptr, DestroyNotify, StructureNotifyMask, &ft_exit,

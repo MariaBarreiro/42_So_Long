@@ -14,8 +14,6 @@
 # define SO_LONG_H
 
 ///Includes///
-
-
 #include <fcntl.h>											//read library
 #include <unistd.h>											//close, read, write library
 #include <stdlib.h>											//malloc, free, exit library
@@ -30,7 +28,8 @@
 
 //Defines
 
-# define SIZE 64
+
+# define SIZE 32
 
 ///Structs///
 
