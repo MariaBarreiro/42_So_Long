@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include "../42_Gnl/get_next_line.h"
+# include "../42_Gnl/get_next_line.h"
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

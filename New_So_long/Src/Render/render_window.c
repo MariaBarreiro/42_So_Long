@@ -25,9 +25,9 @@ void	render_window(t_game *game)
 		die(8, game);
 	}
 	game->img.mlx_img = mlx_new_image(game->mlx_ptr, (game->width * SIZE),
-								(game->height * SIZE));
+							(game->height * SIZE));
 	game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp, 
-								&game->img.line_len, &game->img.endian);
+					&game->img.line_len, &game->img.endian);
 }
 
 void	render(t_game *game)

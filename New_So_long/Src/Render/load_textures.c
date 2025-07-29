@@ -16,10 +16,9 @@ void	load_textures(t_game *game)
 {
 	game->tiles.y = SIZE;
 	game->tiles.x = SIZE;
-	
 	game->textures.collectible
 		= mlx_xpm_file_to_image(game->mlx_ptr, "Textures/collect/coin.xpm",
-		&game->tiles.x, &game->tiles.y);
+			&game->tiles.x, &game->tiles.y);
 	game->textures.exit_active
 		= mlx_xpm_file_to_image(game->mlx_ptr, "Textures/exit/exit.xpm",
 			&game->tiles.x, &game->tiles.y);

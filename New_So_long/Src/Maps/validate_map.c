@@ -17,15 +17,12 @@ void	check_map_size(t_game *game)
 	int	i;
 
 	i = 0;
-	//minimum size check
 	if (game->height < 3
 		|| game->width < 3
 		|| (game->height + game->width) <= 7)
 		die(4, game);
-	//because its an array and it starts at 0, I need to take one value of Height!!!!!!!
 	while (i < (game->height - 1))
 	{
-		//rectangle check
 		if (modified_strlen(game->map[i]) != game->width
 			&& game->map[i] != NULL)
 			die(4, game);
