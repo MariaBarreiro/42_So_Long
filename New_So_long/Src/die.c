@@ -45,10 +45,10 @@ void	free_everything(t_game *game)
 		return ;
 	if (game->map != NULL)
 		free_map(game->map, game);
+	destroy_textures(game);
 	if (game->img.mlx_img)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
-		// destroy_textures(game);
 	}
 	if (game->mlx_win_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->mlx_win_ptr);
@@ -93,7 +93,7 @@ void	free_array(char **map, int lines)
 	free(map);
 }
 
-int	 ft_exit(t_game *game)
+int	ft_exit(t_game *game)
 {
 	free_everything(game);
 	exit (EXIT_SUCCESS);

@@ -19,19 +19,12 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		//check extension
 		check_extension(av[1]);
-		//initializate the game
 		game = init();
-		//open the map i'm passing in the v[1]
 		fd = open(av[1], O_RDONLY);
-		//check for error
 		if (fd < 0)
-			//error opening the map
 			die(1, game);
-		//read/load map
 		load_map(av[1], game);
-		//validates the map
 		map_validation(game);
 		render(game);
 		ft_exit(game);
@@ -60,4 +53,3 @@ void	map_validation(t_game *game)
 	check_valid_path(game);
 	final_check(game);
 }
-

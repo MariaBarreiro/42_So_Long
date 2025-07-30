@@ -32,15 +32,19 @@ void	validate_move_up(t_game *game)
 	t_point_in_map	player_pos;
 
 	player_pos = game->player;
-	if ((game->map[player_pos.y - 1][player_pos.x] == 'E' && game->e_reached == 0
-		&& game->c_gathered != game->collectibles) 
-		|| game->map[player_pos.y - 1][player_pos.x] == '1')
+	if ((game->map[player_pos.y - 1][player_pos.x] == 'E'
+		&& game->e_reached == 0
+		&& game->c_gathered != game->collectibles)
+		|| game->map[player_pos.y - 1][player_pos.x] == 1)
 		return ;
 	else
+	{
 		move_up(game);
-	game->moves += 1;
+		game->moves += 1;
+	}
 	ft_printf("Moves: %d\n", game->moves);
-	ft_printf("Collectibles left: %d\n", (game->collectibles - game->c_gathered));
+	ft_printf("Total collectibles: %d\n", game->collectibles);
+	ft_printf("Collectibles gathered: %d\n", game->c_gathered);
 }
 
 void	validate_move_left(t_game *game)
@@ -48,15 +52,19 @@ void	validate_move_left(t_game *game)
 	t_point_in_map	player_pos;
 
 	player_pos = game->player;
-	if ((game->map[player_pos.y][player_pos.x - 1] == 'E' && game->e_reached == 0
-		&& game->c_gathered != game->collectibles) 
-		|| game->map[player_pos.y][player_pos.x - 1] == '1')
+	if ((game->map[player_pos.y][player_pos.x - 1] == 'E'
+		&& game->e_reached == 0
+		&& game->c_gathered != game->collectibles)
+		|| game->map[player_pos.y][player_pos.x - 1] == 1)
 		return ;
 	else
+	{
 		move_left(game);
-	game->moves += 1;
+		game->moves += 1;
+	}
 	ft_printf("Moves: %d\n", game->moves);
-	ft_printf("Collectibles left: %d\n", (game->collectibles - game->c_gathered));
+	ft_printf("Total collectibles: %d\n", game->collectibles);
+	ft_printf("Collectibles gathered: %d\n", game->c_gathered);
 }
 
 void	validate_move_down(t_game *game)
@@ -64,15 +72,19 @@ void	validate_move_down(t_game *game)
 	t_point_in_map	player_pos;
 
 	player_pos = game->player;
-	if ((game->map[player_pos.y + 1][player_pos.x] == 'E' && game->e_reached == 0
-		&& game->c_gathered != game->collectibles) 
-		|| game->map[player_pos.y + 1][player_pos.x] == '1')
+	if ((game->map[player_pos.y + 1][player_pos.x] == 'E'
+		&& game->e_reached == 0
+		&& game->c_gathered != game->collectibles)
+		|| game->map[player_pos.y + 1][player_pos.x] == 1)
 		return ;
 	else
+	{
 		move_down(game);
-	game->moves += 1;
+		game->moves += 1;
+	}
 	ft_printf("Moves: %d\n", game->moves);
-	ft_printf("Collectibles left: %d\n", (game->collectibles - game->c_gathered));
+	ft_printf("Total collectibles: %d\n", game->collectibles);
+	ft_printf("Collectibles gathered: %d\n", game->c_gathered);
 }
 
 void	validate_move_right(t_game *game)
@@ -80,13 +92,17 @@ void	validate_move_right(t_game *game)
 	t_point_in_map	player_pos;
 
 	player_pos = game->player;
-	if ((game->map[player_pos.y][player_pos.x + 1] == 'E' && game->e_reached == 0
-		&& game->c_gathered != game->collectibles) 
-		|| game->map[player_pos.y][player_pos.x + 1] == '1')
+	if ((game->map[player_pos.y][player_pos.x + 1] == 'E'
+		&& game->e_reached == 0
+		&& game->c_gathered != game->collectibles)
+		|| game->map[player_pos.y][player_pos.x + 1] == 1)
 		return ;
 	else
+	{
 		move_right(game);
-	game->moves += 1;
+		game->moves += 1;
+	}
 	ft_printf("Moves: %d\n", game->moves);
-	ft_printf("Collectibles left: %d\n", (game->collectibles - game->c_gathered));
+	ft_printf("Total collectibles: %d\n", game->collectibles);
+	ft_printf("Collectibles gathered: %d\n", game->c_gathered);
 }

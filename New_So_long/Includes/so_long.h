@@ -14,35 +14,32 @@
 # define SO_LONG_H
 
 ///Includes///
-
-
-#include <fcntl.h>											//read library
-#include <unistd.h>											//close, read, write library
-#include <stdlib.h>											//malloc, free, exit library
-#include <stdio.h>											//perror library
-#include <string.h>											//strerror library
+# include <fcntl.h>									//read library
+# include <unistd.h>								//close, read, write library
+# include <stdlib.h>								//malloc, free, exit library
+# include <stdio.h>									//perror library
+# include <string.h>								//strerror library
 # include <X11/keysym.h>
 # include <X11/X.h>
-#include "../Libs/42_Libft/42_Gnl/get_next_line.h"			//include gnl
-#include "../Libs/42_Libft/Inc/libft.h"						//include libft
-#include "../Libs/minilibx-linux/mlx.h"						//include mlx
-#include "../Libs/42_Libft/42_Ft_Printf/Inc/ft_printf.h"	//include printf
+# include "../Libs/42_Libft/42_Gnl/get_next_line.h"			//include gnl
+# include "../Libs/42_Libft/Inc/libft.h"					//include libft
+# include "../Libs/minilibx-linux/mlx.h"					//include mlx
+# include "../Libs/42_Libft/42_Ft_Printf/Inc/ft_printf.h"	//include printf
 
 //Defines
 
-# define SIZE 64
+# define SIZE	32 
 
 ///Structs///
-
 
 //coordinates
 //good to keep track of where the player currently is
 //also good to know where the door is
 typedef struct s_point_in_map
 {
-	int x;
+	int	x;
 	int	y;
-}t_point_in_map;
+}	t_point_in_map;
 
 //MLX image structure
 //Needed to manipulate pixels
@@ -54,7 +51,7 @@ typedef struct s_image
 	int		bpp;					//bits per pixel
 	int		line_len;				//byter per row
 	int		endian;					//byte order
-}t_image;
+}	t_image;
 
 //loaded textures
 
@@ -70,41 +67,38 @@ typedef struct s_textures
 	void	*exit_inactive;
 
 	void	*collectible;
-}t_textures;
+}	t_textures;
 
 //main game structure
-
-typedef struct  s_game
+typedef struct s_game
 {
-	char						**map;			//2d map matrix
-	int							width;			//number of columns
-	int							height;			//number of rows
-	int							collectibles;	//number of collectibles
-	int							c_gathered;		//number of collectibles gathered
-	int							e_reached;		//bollean to keep track if the exit was reached or not
-	int							moves;			//number of moves done
-	t_point_in_map				coords;			//coordinates
-	t_point_in_map				player;			//coordinates of player
-	t_point_in_map				exit;			//coordinates of exit
-	t_point_in_map				tiles;			//coordinates of the tiles
-	void						*mlx_ptr;		//MLX pointer
-	void						*mlx_win_ptr;	//MLX Window pointer
-	t_image						img;			//image struct
-	t_textures					textures;		//textures struct
-}t_game;
-
+	char			**map;			//2d map matrix
+	int				width;			//number of columns
+	int				height;			//number of rows
+	int				collectibles;	//number of collectibles
+	int				c_gathered;		//number of collectibles gathered
+	int				e_reached;		//bollean of exit reached or not
+	int				moves;			//number of moves done
+	t_point_in_map	coords;			//coordinates
+	t_point_in_map	player;			//coordinates of player
+	t_point_in_map	exit;			//coordinates of exit
+	t_point_in_map	tiles;			//coordinates of the tiles
+	void			*mlx_ptr;		//MLX pointer
+	void			*mlx_win_ptr;	//MLX Window pointer
+	t_image			img;			//image struct
+	t_textures		textures;		//textures struct
+}	t_game;
 
 ///Functions///
-
 ///General///
 
 t_game	*init(void);
-void		init_game(t_game *game);
-void		init_mlx(t_game *game);
-void		die(int num, t_game *game);
-void		free_everything(t_game *game);
-void		free_map(char **map, t_game *game);
-void		free_array(char **map, int lines);
+void	init_game(t_game *game);
+void	init_mlx(t_game *game);
+void	die(int num, t_game *game);
+void	free_everything(t_game *game);
+void	free_map(char **map, t_game *game);
+void	free_array(char **map, int lines);
 
 ///Maps///
 
@@ -130,9 +124,7 @@ void	put_walls(t_game *game, int x, int y);
 void	put_floor(t_game *game, int x, int y);
 void	put_rest(t_game *game, int x, int y);
 void	put_image(t_game *game, void *img, int tile_x, int tile_y);
-// void	put_image(t_game *game, char *tile, int tile_x, int tile_y);
 void	load_textures(t_game *game);
-// void	load_rest(t_game *game);
 void	*select_exit(t_game *game);
 void	render_window(t_game *game);
 void	render(t_game *game);
@@ -143,7 +135,7 @@ void	render_borders(t_game *game, int x, int y);
 //Destroy and exit//
 
 void	destroy_textures(t_game *game);
-int		 ft_exit(t_game *game);
+int		ft_exit(t_game *game);
 
 //Movement//
 
@@ -159,4 +151,3 @@ void	validate_move_down(t_game *game);
 void	validate_move_right(t_game *game);
 
 #endif
-
