@@ -44,8 +44,8 @@ void	init_game(t_game *game)
 
 void	init_mlx(t_game *game)
 {
-	game->mlx_ptr = mlx_init();		//Initializes the MLX
-	game->mlx_win_ptr = NULL;		//Initializes MLX Window
+	game->mlx_ptr = mlx_init();
+	game->mlx_win_ptr = NULL;
 	game->img.mlx_img = NULL;
 	game->img.addr = NULL;
 	game->img.bpp = 0;

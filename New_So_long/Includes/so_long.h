@@ -28,7 +28,7 @@
 
 //Defines
 
-# define SIZE 64
+# define SIZE	32 
 
 ///Structs///
 
@@ -70,7 +70,7 @@ typedef struct s_textures
 }	t_textures;
 
 //main game structure
-typedef struct	s_game
+typedef struct s_game
 {
 	char			**map;			//2d map matrix
 	int				width;			//number of columns
