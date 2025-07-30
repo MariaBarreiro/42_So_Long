@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/31 12:36:08 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/06/15 17:46:40 by mda-enca         ###   ########.fr       */
+/*   Created: 2025/07/12 15:47:38 by mda-enca          #+#    #+#             */
+/*   Updated: 2025/07/12 15:49:17 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,15 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		//check extension
 		check_extension(av[1]);
-		//initializate the game
 		game = init();
-		//open the map i'm passing in the v[1]
 		fd = open(av[1], O_RDONLY);
-		//check for error
 		if (fd < 0)
-		{
-			//error opening the map
 			die(1, game);
-			free(game);
-		}
-		//read/load map
 		load_map(av[1], game);
-		//validates the map
 		map_validation(game);
 		render(game);
+		ft_exit(game);
 	}
 	return (0);
 }

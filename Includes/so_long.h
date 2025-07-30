@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 17:38:27 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/05/30 18:23:15 by mda-enca         ###   ########.fr       */
+/*   Created: 2025/07/12 15:49:58 by mda-enca          #+#    #+#             */
+/*   Updated: 2025/07/12 16:05:18 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,32 @@
 # define SO_LONG_H
 
 ///Includes///
-
-#include <fcntl.h>											//read library
-#include <unistd.h>											//close, read, write library
-#include <stdlib.h>											//malloc, free, exit library
-#include <stdio.h>											//perror library
-#include <string.h>											//strerror library
+# include <fcntl.h>									//read library
+# include <unistd.h>								//close, read, write library
+# include <stdlib.h>								//malloc, free, exit library
+# include <stdio.h>									//perror library
+# include <string.h>								//strerror library
 # include <X11/keysym.h>
 # include <X11/X.h>
-#include "../Libs/42_Libft/42_Gnl/get_next_line.h"			//include gnl
-#include "../Libs/42_Libft/Inc/libft.h"						//include libft
-#include "../Libs/minilibx-linux/mlx.h"						//include mlx
-#include "../Libs/42_Libft/42_Ft_Printf/Inc/ft_printf.h"	//include printf
+# include "../Libs/42_Libft/42_Gnl/get_next_line.h"			//include gnl
+# include "../Libs/42_Libft/Inc/libft.h"					//include libft
+# include "../Libs/minilibx-linux/mlx.h"					//include mlx
+# include "../Libs/42_Libft/42_Ft_Printf/Inc/ft_printf.h"	//include printf
 
 //Defines
 
-# define SIZE 64
+# define SIZE	32 
 
 ///Structs///
-
 
 //coordinates
 //good to keep track of where the player currently is
 //also good to know where the door is
 typedef struct s_point_in_map
 {
-	int x;
+	int	x;
 	int	y;
-}t_point_in_map;
+}	t_point_in_map;
 
 //MLX image structure
 //Needed to manipulate pixels
@@ -53,52 +51,33 @@ typedef struct s_image
 	int		bpp;					//bits per pixel
 	int		line_len;				//byter per row
 	int		endian;					//byte order
-}t_image;
+}	t_image;
 
 //loaded textures
 
 typedef struct s_textures
 {
-void	*grass;
-void	*grass_b_up;
-void	*grass_b_lft;
-void	*grass_b_dwn;
-void	*grass_b_rght;
+	void	*floor;
 
-void	*grass_b_rght_up;
-void	*grass_b_rght_dwn;
+	void	*wall;
 
-void	*grass_b_lft_up;
-void	*grass_b_lft_dwn;
+	void	*idle_player;
 
-void	*surrounded_by_water;
+	void	*exit_active;
+	void	*exit_inactive;
 
-void	*water;
-void	*water_b_rght;
-void	*water_b_lft;
-void	*water_from_up_dwn;
-void	*water_from_lft_rght;
-
-void	*idle_player;
-void	*left_player;
-void	*right_player;
-void	*exit_active;
-void	*exit_inactive;
-void	*collectible;
-
-void	*wall;
-}t_textures;
+	void	*collectible;
+}	t_textures;
 
 //main game structure
-
-typedef struct  s_game
+typedef struct s_game
 {
 	char			**map;			//2d map matrix
 	int				width;			//number of columns
 	int				height;			//number of rows
 	int				collectibles;	//number of collectibles
 	int				c_gathered;		//number of collectibles gathered
-	int				e_reached;		//bollean to keep track if the exit was reached or not
+	int				e_reached;		//bollean of exit reached or not
 	int				moves;			//number of moves done
 	t_point_in_map	coords;			//coordinates
 	t_point_in_map	player;			//coordinates of player
@@ -108,11 +87,9 @@ typedef struct  s_game
 	void			*mlx_win_ptr;	//MLX Window pointer
 	t_image			img;			//image struct
 	t_textures		textures;		//textures struct
-}t_game;
-
+}	t_game;
 
 ///Functions///
-
 ///General///
 
 t_game	*init(void);
@@ -142,42 +119,35 @@ void	final_check(t_game *game);
 
 //Render//
 
-void	render(t_game *game);
 void	render_map(t_game *game);
-void	render_window(t_game *game);
-void	put_image(t_game *game, void *img, int tile_x, int tile_y);
-// void	render_tile(t_game *game, int x, int y);
-void	put_water(t_game *game, int x, int y);
-void	put_grass(t_game *game, int x, int y);
+void	put_walls(t_game *game, int x, int y);
+void	put_floor(t_game *game, int x, int y);
 void	put_rest(t_game *game, int x, int y);
-void	*select_grass(t_game *game, int x, int y);
-void	*select_grass_combinations(t_game *game, int x, int y);
-void	*select_grass_rest(t_game *game, int x, int y);
-void	*select_water(t_game *game, int x, int y);
-void	*select_exit(t_game *game);
+void	put_image(t_game *game, void *img, int tile_x, int tile_y);
 void	load_textures(t_game *game);
-void	load_grass(t_game *game);
-void	load_walls(t_game *game);
-void	load_rest(t_game *game);
+void	*select_exit(t_game *game);
+void	render_window(t_game *game);
+void	render(t_game *game);
+void	render_tile(t_game *game, int x, int y);
+void	render_corners(t_game *game, int x, int y);
+void	render_borders(t_game *game, int x, int y);
 
 //Destroy and exit//
 
-int		ft_exit(t_game *game);
 void	destroy_textures(t_game *game);
-void	destroy_grass(t_game *game);
-void	destroy_walls(t_game *game);
-void	destroy_rest(t_game *game);
+int		ft_exit(t_game *game);
 
 //Movement//
 
+void	check_win(t_game *game);
+void	move_up(t_game *game);
+void	move_down(t_game *game);
+void	move_right(t_game *game);
+void	move_left(t_game *game);
 int		handle_keypress(int keysym, t_game *game);
 void	validate_move_up(t_game *game);
 void	validate_move_left(t_game *game);
 void	validate_move_down(t_game *game);
 void	validate_move_right(t_game *game);
-void	move_up(t_game *game);
-void	move_down(t_game *game);
-void	move_right(t_game *game);
-void	move_left(t_game *game);
 
 #endif
