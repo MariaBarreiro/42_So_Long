@@ -47,7 +47,9 @@ void	check_borders(t_game *game)
 			}
 		}
 		else if (game->map[coords.y][0] != '1'
-					|| game->map[coords.y][game->width - 1] != '1')
+					|| game->map[coords.y][game->width - 1] != '1'
+					|| game->map[0][coords.x] != '1'
+					|| game->map[game->height - 1][coords.x] != '1')
 			die (5, game);
 	}
 }
