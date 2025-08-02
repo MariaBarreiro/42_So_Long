@@ -21,7 +21,7 @@ t_game	*init(void)
 		die(6, game);
 	init_game(game);
 	init_mlx(game);
-	load_textures(game);
+//	load_textures(game);
 	return (game);
 }
 
@@ -44,7 +44,8 @@ void	init_game(t_game *game)
 
 void	init_mlx(t_game *game)
 {
-	game->mlx_ptr = mlx_init();
+//	game->mlx_ptr = mlx_init();
+	game->mlx_ptr =  NULL;
 	game->mlx_win_ptr = NULL;
 	game->img.mlx_img = NULL;
 	game->img.addr = NULL;

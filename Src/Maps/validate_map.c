@@ -42,7 +42,8 @@ void	check_borders(t_game *game)
 			coords.x = -1;
 			while (++coords.x < game->width - 1)
 			{
-				if (game->map[coords.y][coords.x] != '1')
+				if (game->map[coords.y][coords.x] != '1'
+					|| game->map[game->height - 1][coords.x] != '1')
 					die (5, game);
 			}
 		}

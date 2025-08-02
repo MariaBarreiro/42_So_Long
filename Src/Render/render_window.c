@@ -15,10 +15,12 @@
 
 void	render_window(t_game *game)
 {
-	if (game->mlx_ptr == NULL)
-		die(8, game);
+	//if (game->mlx_ptr == NULL)
+	//	die(8, game);
+	game->mlx_ptr = mlx_init();
 	game->mlx_win_ptr = mlx_new_window(game->mlx_ptr, (game->width * SIZE),
 			(game->height * SIZE), "so_long");
+	load_textures(game);
 	if (game->mlx_win_ptr == NULL)
 	{
 		free (game->mlx_win_ptr);
