@@ -103,6 +103,7 @@ void	free_array(char **map, int lines);
 ///Maps///
 
 void	check_extension(char *file);
+int		ft_strcmp(char *s1, char *s2);
 void	load_map(char *map_file, t_game *game);
 int		count_lines(char *map_file);
 void	fill_map(int fd, t_game *game);

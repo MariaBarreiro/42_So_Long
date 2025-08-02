@@ -39,6 +39,8 @@ void	check_extension(char *file)
 
 	ber_extension = ".ber";
 	extension = file + (ft_strlen(file) - 4);
+	if (ft_strcmp(ber_extension, ".ber"))
+		die(2, NULL);
 	if (ft_strncmp(extension, ber_extension, 4) != 0)
 		die(2, NULL);
 }
@@ -52,4 +54,14 @@ void	map_validation(t_game *game)
 	check_map_content(game);
 	check_valid_path(game);
 	final_check(game);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
 }
