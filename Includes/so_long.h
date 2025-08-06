@@ -92,7 +92,7 @@ typedef struct s_game
 ///Functions///
 ///General///
 
-t_game	*init(void);
+t_game	*init(t_game *game);
 void	init_game(t_game *game);
 void	init_mlx(t_game *game);
 void	die(int num, t_game *game);

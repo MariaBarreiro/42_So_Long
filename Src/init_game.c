@@ -12,13 +12,13 @@
 
 #include "../Includes/so_long.h"
 
-t_game	*init(void)
+t_game	*init(t_game *game)
 {
-	t_game	*game;
-
-	game = (t_game *)malloc(1 * sizeof(t_game));
-	if (!game)
-		die(6, game);
+	// t_game	*game;
+	//
+	// game = (t_game *)malloc(1 * sizeof(t_game));
+	// if (!game)
+	// 	die(6, game);
 	init_game(game);
 	init_mlx(game);
 //	load_textures(game);
@@ -44,7 +44,7 @@ void	init_game(t_game *game)
 
 void	init_mlx(t_game *game)
 {
-//	game->mlx_ptr = mlx_init();
+	// game->mlx_ptr = mlx_init();
 	game->mlx_ptr =  NULL;
 	game->mlx_win_ptr = NULL;
 	game->img.mlx_img = NULL;
