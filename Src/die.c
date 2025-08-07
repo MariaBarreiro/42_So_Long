@@ -57,7 +57,7 @@ void	free_everything(t_game *game)
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 	}
-	free(game);
+	//free(game);
 }
 
 void	free_map(char **map, t_game *game)
