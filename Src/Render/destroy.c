@@ -14,10 +14,16 @@
 
 void	destroy_textures(t_game *game)
 {
-	mlx_destroy_image(game->mlx_ptr, game->textures.collectible);
-	mlx_destroy_image(game->mlx_ptr, game->textures.exit_active);
-	mlx_destroy_image(game->mlx_ptr, game->textures.exit_inactive);
-	mlx_destroy_image(game->mlx_ptr, game->textures.idle_player);
-	mlx_destroy_image(game->mlx_ptr, game->textures.floor);
-	mlx_destroy_image(game->mlx_ptr, game->textures.wall);
+	if (game->textures.collectible)
+		mlx_destroy_image(game->mlx_ptr, game->textures.collectible);
+	if (game->textures.exit_active)
+		mlx_destroy_image(game->mlx_ptr, game->textures.exit_active);
+	if (game->textures.exit_inactive)
+		mlx_destroy_image(game->mlx_ptr, game->textures.exit_inactive);
+	if (game->textures.idle_player)
+		mlx_destroy_image(game->mlx_ptr, game->textures.idle_player);
+	if (game->textures.floor)
+		mlx_destroy_image(game->mlx_ptr, game->textures.floor);
+	if (game->textures.wall)
+		mlx_destroy_image(game->mlx_ptr, game->textures.wall);
 }

@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:28:07 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/06/03 14:29:38 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/08/15 10:49:36 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 
 t_game	*init(t_game *game)
 {
-	// t_game	*game;
-	//
-	// game = (t_game *)malloc(1 * sizeof(t_game));
-	// if (!game)
-	// 	die(6, game);
 	init_game(game);
 	init_mlx(game);
-//	load_textures(game);
 	return (game);
 }
 
@@ -44,8 +38,7 @@ void	init_game(t_game *game)
 
 void	init_mlx(t_game *game)
 {
-	// game->mlx_ptr = mlx_init();
-	game->mlx_ptr =  NULL;
+	game->mlx_ptr = NULL;
 	game->mlx_win_ptr = NULL;
 	game->img.mlx_img = NULL;
 	game->img.addr = NULL;

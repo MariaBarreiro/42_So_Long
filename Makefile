@@ -99,7 +99,7 @@ $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(NAME): $(OBJS_DIR) $(OBJS) depends $(LIB) $(MLX)
+$(NAME): $(OBJS_DIR) $(OBJS) $(LIB) $(MLX)
 	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(PRINTF) $(MLX) $(MLXFLAGS) -o $(NAME)
 
 clean:

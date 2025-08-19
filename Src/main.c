@@ -40,7 +40,7 @@ void	check_extension(char *file)
 
 	ber_extension = ".ber";
 	extension = file + (ft_strlen(file) - 4);
-	if (ft_strcmp(ber_extension, ".ber"))
+	if (ft_strcmp(file, ".ber") == 0)
 		die(2, NULL);
 	if (ft_strncmp(extension, ber_extension, 4) != 0)
 		die(2, NULL);
