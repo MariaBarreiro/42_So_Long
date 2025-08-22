@@ -55,6 +55,8 @@ $(OBJS_DIR)/%.o: %.c
 
 $(NAME): $(OBJS_DIR) $(OBJS)
 	$(AR) $(NAME) $(OBJS)
+	@echo "📚 Ft_Printf Compiled!"
+
 
 clean:
 	$(RM) $(OBJS)

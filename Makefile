@@ -2,7 +2,7 @@
 #                                    Config                                    #
 # **************************************************************************** #
 
-MAKE = make
+MAKE = make 
 SHELL = bash
 
 # **************************************************************************** #
@@ -94,6 +94,7 @@ depends:
 
 $(OBJS_DIR):
 	@mkdir -p Obj
+	@echo "📋 Objects directory created!"
 
 $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
@@ -101,15 +102,19 @@ $(OBJS_DIR)/%.o: %.c
 
 $(NAME): $(OBJS_DIR) $(OBJS) $(LIB) $(MLX)
 	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(PRINTF) $(MLX) $(MLXFLAGS) -o $(NAME)
+	@echo "🤎 Compilation completed!"
 
 clean:
 	@$(MAKE) clean -C $(LIB_PATH)
 	@$(MAKE) clean -C $(MLX_PATH)
 	@$(RM) $(OBJS)
+	@echo "🌷 Objects removed successfully!"
 
 fclean: clean
 	@$(MAKE) fclean -C $(LIB_PATH)
 	@$(MAKE) clean -C $(MLX_PATH)
 	@$(RM) $(NAME) $(OBJS_DIR)
+	@echo "✨ Program removed successfully!"
 
 re: fclean all
+		@echo "🦉 Re-compile was successfull!"

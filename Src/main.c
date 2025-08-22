@@ -37,12 +37,14 @@ void	check_extension(char *file)
 {
 	char	*ber_extension;
 	char	*extension;
+	char	*no_path;
 
 	ber_extension = ".ber";
 	extension = file + (ft_strlen(file) - 4);
-	if (ft_strcmp(file, ".ber") == 0)
-		die(2, NULL);
+	no_path = remove_path(file);
 	if (ft_strncmp(extension, ber_extension, 4) != 0)
+		die(2, NULL);
+	if (ft_strcmp(no_path, ".ber") == 0)
 		die(2, NULL);
 }
 
@@ -65,4 +67,18 @@ int	ft_strcmp(char *s1, char *s2)
 	while (s1[i] == s2[i] && s1[i] != '\0')
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+char	*remove_path(char *file)
+{
+	int		i;
+
+	i = 0;
+	while (file[i])
+		i++;
+	i -= 1;
+	while (file[i] != '/')
+		i--;
+	i += 1;
+	return (file + i);
 }
