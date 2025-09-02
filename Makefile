@@ -85,9 +85,9 @@ RM              = rm -rf
 #                                    Rules                                     #
 # **************************************************************************** #
  
-all: depends $(NAME)
+all: $(LIB) $(NAME)
 
-depends: 
+$(LIB): 
 	@$(MAKE) -C $(PRINTF_PATH)
 	@$(MAKE) -C $(LIB_PATH)
 	@$(MAKE) -C $(MLX_PATH)
@@ -100,7 +100,7 @@ $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(NAME): $(OBJS_DIR) $(OBJS) $(LIB) $(MLX)
+$(NAME): $(OBJS_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(PRINTF) $(MLX) $(MLXFLAGS) -o $(NAME)
 	@echo "🤎 Compilation completed!"
 
