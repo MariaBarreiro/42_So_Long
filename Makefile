@@ -112,7 +112,7 @@ clean:
 
 fclean: clean
 	@$(MAKE) fclean -C $(LIB_PATH)
-	@$(MAKE) clean -C $(MLX_PATH)
+##	@$(MAKE) clean -C $(MLX_PATH)
 	@$(RM) $(NAME) $(OBJS_DIR)
 	@echo "✨ Program removed successfully!"
 

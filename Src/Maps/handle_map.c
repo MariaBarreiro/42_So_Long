@@ -26,6 +26,7 @@ void	load_map(char *map_file, t_game *game)
 	if (!game->map)
 		die(6, game);
 	fill_map(fd, game);
+//	game->map[game->height] = NULL;
 	game->width = modified_strlen(game->map[0]);
 	close(fd);
 }
