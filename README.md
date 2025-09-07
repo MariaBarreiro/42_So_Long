@@ -93,5 +93,3 @@ This project improves skills in:
   - Must have a valid path from `P` → all `C` → `E`  
 * Errors: Print `"Error\n"` followed by a message.  
 
-**Example map**:  
-
