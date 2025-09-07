@@ -15,7 +15,6 @@
 * [Game 🎮](#game)
 * [Graphics 🖼️](#graphics)
 * [Map 🗺️](#map)
-* [Bonus 🏆](#bonus)
 * [Example 📸](#example)
 
 ---
