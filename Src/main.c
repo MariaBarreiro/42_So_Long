@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 			die(1, &game);
 		load_map(av[1], &game);
 		map_validation(&game);
+		close(fd);
 		render(&game);
 		ft_exit(&game);
 	}

@@ -21,7 +21,7 @@ void	check_map_size(t_game *game)
 		|| game->width < 3
 		|| (game->height + game->width) <= 7)
 		die(4, game);
-	while (i < (game->height - 1))
+	while (i < game->height)
 	{
 		if (modified_strlen(game->map[i]) != game->width
 			&& game->map[i] != NULL)
