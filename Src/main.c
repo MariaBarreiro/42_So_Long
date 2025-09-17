@@ -78,7 +78,7 @@ char	*remove_path(char *file)
 	while (file[i])
 		i++;
 	i -= 1;
-	while (file[i] != '/')
+	while (file[i] != '/' && i >= 0)
 		i--;
 	i += 1;
 	return (file + i);

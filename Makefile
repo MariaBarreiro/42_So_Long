@@ -85,11 +85,13 @@ RM              = rm -rf
 #                                    Rules                                     #
 # **************************************************************************** #
  
-all: $(LIB) $(NAME)
+all: $(LIB) $(MLX) $(NAME)
 
 $(LIB): 
 	@$(MAKE) -C $(PRINTF_PATH)
 	@$(MAKE) -C $(LIB_PATH)
+
+$(MLX):
 	@$(MAKE) -C $(MLX_PATH)
 
 $(OBJS_DIR):
